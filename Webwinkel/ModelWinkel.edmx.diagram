@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc9adb40433540eea3f6f23c58bfafcd" Name="Diagram1">
+        <EntityTypeShape EntityType="WinkelModel.Article" Width="1.5" PointX="4.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelModel.Category" Width="1.5" PointX="0.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelModel.Customer" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelModel.Order" Width="1.5" PointX="4.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelModel.Supplier" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelModel.sysdiagram" Width="1.5" PointX="8" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="WinkelModel.ArticlesCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="WinkelModel.CustomersOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="WinkelModel.OrdersArticles" ManuallyRouted="false" />
+        <AssociationConnector Association="WinkelModel.SuppliersArticles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
