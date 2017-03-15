@@ -13,17 +13,15 @@ namespace Webwinkel
     public partial class MainMenu : Form
     {
         WinkelEntities db = new WinkelEntities();
-
+        
         public MainMenu()
         {
             InitializeComponent();
             ListCustomers();
         }
-
-        private void btEditCustomer_Click(object sender, EventArgs e)
+        private void MainMenu_Activated(object sender, EventArgs e)
         {
-            EditCustomer CustomEdit = new EditCustomer(db);
-            CustomEdit.Show();
+            ListCustomers();
         }
         public void ListCustomers()
         {
@@ -36,17 +34,34 @@ namespace Webwinkel
                 customerlist.Name = customers.ID.ToString();
                 listView3.Items.Add(customerlist);
             }
-
         }
-
-        private void MainMenu_Activated(object sender, EventArgs e)
+        private void btEditCustomer_Click_1(object sender, EventArgs e)
         {
-            ListCustomers();
+            if (listView3.SelectedItems[0].Name != null)
+            {
+                int outcome = 1;
+                int.TryParse(listView3.SelectedItems[0].Name, out outcome);
+                Customer customer = db.Customers.Find(outcome);
+                EditCustomer form = new EditCustomer(customer, db);
+                form.Show();
+            }
+        }
+        private void btAddCustomers_Click(object sender, EventArgs e)
+        {
+            EditCustomer CustomEdit = new EditCustomer(db);
+            CustomEdit.Show();
         }
 
+        ////////////TRASH
         private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+        //private void btEditCustomer_Click(object sender, EventArgs e)
+        //{
+        //    EditCustomer CustomEdit = new EditCustomer(db);
+        //    CustomEdit.Show();
+        //}
+
     }
 }

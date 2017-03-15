@@ -50,9 +50,9 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btAddCustomers = new System.Windows.Forms.Button();
             this.btEditCustomer = new System.Windows.Forms.Button();
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -240,6 +240,11 @@
             this.columnHeader12.Text = "Adress";
             this.columnHeader12.Width = 180;
             // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Phonenumber";
+            this.columnHeader13.Width = 100;
+            // 
             // btAddCustomers
             // 
             this.btAddCustomers.AccessibleName = "";
@@ -249,6 +254,7 @@
             this.btAddCustomers.TabIndex = 5;
             this.btAddCustomers.Text = "Add Article";
             this.btAddCustomers.UseVisualStyleBackColor = true;
+            this.btAddCustomers.Click += new System.EventHandler(this.btAddCustomers_Click);
             // 
             // btEditCustomer
             // 
@@ -259,11 +265,7 @@
             this.btEditCustomer.TabIndex = 9;
             this.btEditCustomer.Text = "Edit Customer";
             this.btEditCustomer.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Phonenumber";
-            this.columnHeader13.Width = 100;
+            this.btEditCustomer.Click += new System.EventHandler(this.btEditCustomer_Click_1);
             // 
             // groupBox3
             // 

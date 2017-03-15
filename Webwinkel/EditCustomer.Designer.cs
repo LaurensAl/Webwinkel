@@ -35,6 +35,7 @@
             this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxBankAccount = new System.Windows.Forms.TextBox();
             this.btSave = new System.Windows.Forms.Button();
+            this.btUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -96,11 +97,22 @@
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Location = new System.Drawing.Point(81, 290);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(270, 23);
+            this.btUpdate.TabIndex = 7;
+            this.btUpdate.Text = "Update";
+            this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
             // EditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 380);
+            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.textBoxBankAccount);
             this.Controls.Add(this.textBoxPhoneNumber);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.TextBox textBoxBankAccount;
         private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Button btUpdate;
     }
 }

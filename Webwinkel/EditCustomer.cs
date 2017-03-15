@@ -22,11 +22,13 @@ namespace Webwinkel
         public EditCustomer(WinkelEntities db)//to add
         {
             InitializeComponent();
+            btUpdate.Hide();
             this.db = db;
         }
         public EditCustomer(Customer customer, WinkelEntities db)//edit
         {
             InitializeComponent();
+            btSave.Hide();
             this.db = db;
             this.customer = customer;
             textBox1.Text = this.customer.ID.ToString();
@@ -43,12 +45,36 @@ namespace Webwinkel
             db.SaveChanges();
             Close();
         }
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            int outcome;
 
+            customer.FirstName = textBoxFirstName.Text;
+            textBoxFirstName.Text = customer.FirstName;
+
+            customer.Lastname = textBoxLastName.Text;
+            textBoxLastName.Text = customer.Lastname;
+
+            customer.Adress = textBoxAdress.Text;
+            textBoxAdress.Text = customer.Adress;
+
+            int.TryParse(textBoxPhoneNumber.Text, out outcome);
+            customer.Phonenumber = outcome;
+            textBoxPhoneNumber.Text = customer.Phonenumber.ToString();
+
+            customer.Bankaccountnumber = textBoxBankAccount.Text;
+            textBoxBankAccount.Text = customer.Bankaccountnumber;
+            db.SaveChanges();
+            Close();
+
+        }
+
+        ///////////////////Trash
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-
+     
     }
 }
