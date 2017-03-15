@@ -12,9 +12,13 @@ namespace Webwinkel
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomersOrdersNOCON
+    public partial class OrdersArticle
     {
-        public int CustomerID { get; set; }
         public int OrdersID { get; set; }
+        public int ArticlesID { get; set; }
+        public Nullable<int> AmountArticles { get; set; }
+    
+        public virtual Article Article { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

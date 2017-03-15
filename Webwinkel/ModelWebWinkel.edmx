@@ -10,18 +10,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Number" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="Stock" Type="int" />
-        </EntityType>
-        <EntityType Name="ArticlesCategories">
-          <Key>
-            <PropertyRef Name="ArticlesID" />
-            <PropertyRef Name="CategoriesID" />
-          </Key>
-          <Property Name="ArticlesID" Type="int" Nullable="false" />
-          <Property Name="CategoriesID" Type="int" Nullable="false" />
+          <Property Name="CategorieID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -35,27 +27,18 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="25" Nullable="false" />
-          <Property Name="Lastname" Type="nvarchar" MaxLength="25" Nullable="false" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="25" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="25" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="60" />
           <Property Name="Phonenumber" Type="int" />
           <Property Name="Bankaccountnumber" Type="nvarchar" MaxLength="15" />
-        </EntityType>
-        <EntityType Name="CustomersOrdersNOCON">
-          <Key>
-            <PropertyRef Name="CustomerID" />
-            <PropertyRef Name="OrdersID" />
-          </Key>
-          <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="OrdersID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderNumber" Type="int" Nullable="false" />
-          <Property Name="CustomersID" Type="int" />
+          <Property Name="CustomersID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrdersArticles">
           <Key>
@@ -64,14 +47,15 @@
           </Key>
           <Property Name="OrdersID" Type="int" Nullable="false" />
           <Property Name="ArticlesID" Type="int" Nullable="false" />
+          <Property Name="AmountArticles" Type="int" />
         </EntityType>
         <EntityType Name="Suppliers">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
           <Property Name="PhoneNumber" Type="int" />
           <Property Name="EmailAdress" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -93,32 +77,20 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_ArticlesCategories_Articles">
-          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
-          <End Role="ArticlesCategories" Type="Self.ArticlesCategories" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Articles">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ArticlesCategories">
-              <PropertyRef Name="ArticlesID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArticlesCategories_Categories">
+        <Association Name="FK_Articles_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
-          <End Role="ArticlesCategories" Type="Self.ArticlesCategories" Multiplicity="*" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ArticlesCategories">
-              <PropertyRef Name="CategoriesID" />
+            <Dependent Role="Articles">
+              <PropertyRef Name="CategorieID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Customers">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -179,22 +151,16 @@
         </Association>
         <EntityContainer Name="WinkelModelStoreContainer">
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ArticlesCategories" EntityType="Self.ArticlesCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CustomersOrdersNOCON" EntityType="Self.CustomersOrdersNOCON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrdersArticles" EntityType="Self.OrdersArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuppliersArticles" EntityType="Self.SuppliersArticles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ArticlesCategories_Articles" Association="Self.FK_ArticlesCategories_Articles">
-            <End Role="Articles" EntitySet="Articles" />
-            <End Role="ArticlesCategories" EntitySet="ArticlesCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArticlesCategories_Categories" Association="Self.FK_ArticlesCategories_Categories">
+          <AssociationSet Name="FK_Articles_Categories" Association="Self.FK_Articles_Categories">
             <End Role="Categories" EntitySet="Categories" />
-            <End Role="ArticlesCategories" EntitySet="ArticlesCategories" />
+            <End Role="Articles" EntitySet="Articles" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
@@ -227,12 +193,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Stock" Type="Int32" />
-          <NavigationProperty Name="Categories" Relationship="Self.ArticlesCategories" FromRole="Articles" ToRole="Categories" />
-          <NavigationProperty Name="Orders" Relationship="Self.OrdersArticles" FromRole="Articles" ToRole="Orders" />
+          <Property Name="CategorieID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Articles_Categories" FromRole="Articles" ToRole="Categories" />
+          <NavigationProperty Name="OrdersArticles" Relationship="Self.FK_OrdersArticles_Articles" FromRole="Articles" ToRole="OrdersArticles" />
           <NavigationProperty Name="Suppliers" Relationship="Self.SuppliersArticles" FromRole="Articles" ToRole="Suppliers" />
         </EntityType>
         <EntityType Name="Category">
@@ -241,45 +207,47 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Articles" Relationship="Self.ArticlesCategories" FromRole="Categories" ToRole="Articles" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Categories" FromRole="Categories" ToRole="Articles" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Lastname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Adress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="Phonenumber" Type="Int32" />
           <Property Name="Bankaccountnumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
-        </EntityType>
-        <EntityType Name="CustomersOrdersNOCON">
-          <Key>
-            <PropertyRef Name="CustomerID" />
-            <PropertyRef Name="OrdersID" />
-          </Key>
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="OrdersID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
-          <Property Name="CustomersID" Type="Int32" />
+          <Property Name="CustomersID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
-          <NavigationProperty Name="Articles" Relationship="Self.OrdersArticles" FromRole="Orders" ToRole="Articles" />
+          <NavigationProperty Name="OrdersArticles" Relationship="Self.FK_OrdersArticles_Orders" FromRole="Orders" ToRole="OrdersArticles" />
+        </EntityType>
+        <EntityType Name="OrdersArticle">
+          <Key>
+            <PropertyRef Name="OrdersID" />
+            <PropertyRef Name="ArticlesID" />
+          </Key>
+          <Property Name="OrdersID" Type="Int32" Nullable="false" />
+          <Property Name="ArticlesID" Type="Int32" Nullable="false" />
+          <Property Name="AmountArticles" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_OrdersArticles_Articles" FromRole="OrdersArticles" ToRole="Articles" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrdersArticles_Orders" FromRole="OrdersArticles" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="Int32" />
           <Property Name="EmailAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Articles" Relationship="Self.SuppliersArticles" FromRole="Suppliers" ToRole="Articles" />
@@ -294,8 +262,32 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_Articles_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="CategorieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersArticles_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="1" />
+          <End Role="OrdersArticles" Type="Self.OrdersArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrdersArticles">
+              <PropertyRef Name="ArticlesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_Customers">
-          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -306,13 +298,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ArticlesCategories">
-          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
-          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
-        </Association>
-        <Association Name="OrdersArticles">
-          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_OrdersArticles_Orders">
+          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrdersArticles" Type="Self.OrdersArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrdersArticles">
+              <PropertyRef Name="OrdersID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="SuppliersArticles">
           <End Role="Articles" Type="Self.Article" Multiplicity="*" />
@@ -322,21 +318,25 @@
           <EntitySet Name="Articles" EntityType="Self.Article" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="CustomersOrdersNOCONs" EntityType="Self.CustomersOrdersNOCON" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrdersArticles" EntityType="Self.OrdersArticle" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Articles_Categories" Association="Self.FK_Articles_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersArticles_Articles" Association="Self.FK_OrdersArticles_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="OrdersArticles" EntitySet="OrdersArticles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="ArticlesCategories" Association="Self.ArticlesCategories">
-            <End Role="Articles" EntitySet="Articles" />
-            <End Role="Categories" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="OrdersArticles" Association="Self.OrdersArticles">
-            <End Role="Articles" EntitySet="Articles" />
+          <AssociationSet Name="FK_OrdersArticles_Orders" Association="Self.FK_OrdersArticles_Orders">
             <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrdersArticles" EntitySet="OrdersArticles" />
           </AssociationSet>
           <AssociationSet Name="SuppliersArticles" Association="Self.SuppliersArticles">
             <End Role="Articles" EntitySet="Articles" />
@@ -353,10 +353,10 @@
             <EntityTypeMapping TypeName="WinkelModel.Article">
               <MappingFragment StoreEntitySet="Articles">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -380,20 +380,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CustomersOrdersNOCONs">
-            <EntityTypeMapping TypeName="WinkelModel.CustomersOrdersNOCON">
-              <MappingFragment StoreEntitySet="CustomersOrdersNOCON">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="OrdersID" ColumnName="OrdersID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="WinkelModel.Order">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
                 <ScalarProperty Name="CustomersID" ColumnName="CustomersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersArticles">
+            <EntityTypeMapping TypeName="WinkelModel.OrdersArticle">
+              <MappingFragment StoreEntitySet="OrdersArticles">
+                <ScalarProperty Name="OrdersID" ColumnName="OrdersID" />
+                <ScalarProperty Name="ArticlesID" ColumnName="ArticlesID" />
+                <ScalarProperty Name="AmountArticles" ColumnName="AmountArticles" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -419,22 +419,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ArticlesCategories" TypeName="WinkelModel.ArticlesCategories" StoreEntitySet="ArticlesCategories">
-            <EndProperty Name="Articles">
-              <ScalarProperty Name="ID" ColumnName="ArticlesID" />
-            </EndProperty>
-            <EndProperty Name="Categories">
-              <ScalarProperty Name="ID" ColumnName="CategoriesID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="OrdersArticles" TypeName="WinkelModel.OrdersArticles" StoreEntitySet="OrdersArticles">
-            <EndProperty Name="Articles">
-              <ScalarProperty Name="ID" ColumnName="ArticlesID" />
-            </EndProperty>
-            <EndProperty Name="Orders">
-              <ScalarProperty Name="ID" ColumnName="OrdersID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="SuppliersArticles" TypeName="WinkelModel.SuppliersArticles" StoreEntitySet="SuppliersArticles">
             <EndProperty Name="Articles">
               <ScalarProperty Name="ID" ColumnName="ArticlesID" />

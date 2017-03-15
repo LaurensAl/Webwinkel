@@ -17,21 +17,19 @@ namespace Webwinkel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Article()
         {
-            this.Categories = new HashSet<Category>();
-            this.Orders = new HashSet<Order>();
+            this.OrdersArticles = new HashSet<OrdersArticle>();
             this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ID { get; set; }
-        public Nullable<int> Number { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<int> Stock { get; set; }
+        public int CategorieID { get; set; }
     
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Categories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrdersArticle> OrdersArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
     }
