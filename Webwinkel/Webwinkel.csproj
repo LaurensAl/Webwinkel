@@ -137,6 +137,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ModelWebWinkel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
