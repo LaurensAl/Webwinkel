@@ -44,6 +44,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(120, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBoxFirstName
             // 
@@ -75,7 +76,7 @@
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(120, 20);
             this.textBoxPhoneNumber.TabIndex = 4;
-            this.textBoxPhoneNumber.Text = "Phone Number";
+            this.textBoxPhoneNumber.Text = "0000000000";
             // 
             // textBoxBankAccount
             // 
@@ -83,7 +84,7 @@
             this.textBoxBankAccount.Name = "textBoxBankAccount";
             this.textBoxBankAccount.Size = new System.Drawing.Size(120, 20);
             this.textBoxBankAccount.TabIndex = 5;
-            this.textBoxBankAccount.Text = "BankAccount Number";
+            this.textBoxBankAccount.Text = "BankAccount";
             // 
             // btSave
             // 
@@ -93,6 +94,7 @@
             this.btSave.TabIndex = 6;
             this.btSave.Text = "Save";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // EditCustomer
             // 
