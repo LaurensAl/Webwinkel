@@ -26,7 +26,7 @@ namespace Webwinkel
         }
     
         public virtual DbSet<Article> Articles { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrdersArticle> OrdersArticles { get; set; }

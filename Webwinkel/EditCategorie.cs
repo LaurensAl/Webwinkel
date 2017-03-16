@@ -12,9 +12,35 @@ namespace Webwinkel
 {
     public partial class EditCategorie : Form
     {
+        Categories category = new Categories();
+        WinkelEntities db = new WinkelEntities();
         public EditCategorie()
         {
             InitializeComponent();
         }
+        private void EditCategorie_Load(object sender, EventArgs e)
+        {
+            comboBox1.Text = this.category.Name;
+        }
+        private void tbCategoriesName_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btUpdateCategories_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btAddCategorie_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

@@ -12,10 +12,10 @@ namespace Webwinkel
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Categories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public Categories()
         {
             this.Articles = new HashSet<Article>();
         }

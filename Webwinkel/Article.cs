@@ -27,7 +27,7 @@ namespace Webwinkel
         public Nullable<int> Stock { get; set; }
         public int CategorieID { get; set; }
     
-        public virtual Category Category { get; set; }
+        public virtual Categories Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdersArticle> OrdersArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

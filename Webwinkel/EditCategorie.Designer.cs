@@ -41,6 +41,7 @@
             this.tbCategoriesName.Name = "tbCategoriesName";
             this.tbCategoriesName.Size = new System.Drawing.Size(121, 20);
             this.tbCategoriesName.TabIndex = 0;
+            this.tbCategoriesName.TextChanged += new System.EventHandler(this.tbCategoriesName_TextChanged);
             // 
             // textBoxID
             // 
@@ -58,6 +59,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 2;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btAddCategorie
             // 
@@ -67,6 +69,7 @@
             this.btAddCategorie.TabIndex = 3;
             this.btAddCategorie.Text = "Add Categorie";
             this.btAddCategorie.UseVisualStyleBackColor = true;
+            this.btAddCategorie.Click += new System.EventHandler(this.btAddCategorie_Click);
             // 
             // btUpdateCategories
             // 
@@ -76,6 +79,7 @@
             this.btUpdateCategories.TabIndex = 4;
             this.btUpdateCategories.Text = "Update Categorie";
             this.btUpdateCategories.UseVisualStyleBackColor = true;
+            this.btUpdateCategories.Click += new System.EventHandler(this.btUpdateCategories_Click);
             // 
             // EditCategorie
             // 
@@ -89,6 +93,7 @@
             this.Controls.Add(this.tbCategoriesName);
             this.Name = "EditCategorie";
             this.Text = "EditCategorie";
+            this.Load += new System.EventHandler(this.EditCategorie_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
