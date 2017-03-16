@@ -87,7 +87,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(28, 123);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(494, 128);
+            this.listView1.Size = new System.Drawing.Size(500, 130);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -214,16 +214,15 @@
             this.listView3.GridLines = true;
             this.listView3.Location = new System.Drawing.Point(578, 361);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(494, 189);
+            this.listView3.Size = new System.Drawing.Size(500, 190);
             this.listView3.TabIndex = 5;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
-            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
             // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "ID";
-            this.columnHeader9.Width = 30;
+            this.columnHeader9.Width = 40;
             // 
             // columnHeader10
             // 
@@ -238,7 +237,7 @@
             // columnHeader12
             // 
             this.columnHeader12.Text = "Adress";
-            this.columnHeader12.Width = 180;
+            this.columnHeader12.Width = 155;
             // 
             // columnHeader13
             // 
@@ -252,7 +251,7 @@
             this.btAddCustomers.Name = "btAddCustomers";
             this.btAddCustomers.Size = new System.Drawing.Size(101, 20);
             this.btAddCustomers.TabIndex = 5;
-            this.btAddCustomers.Text = "Add Article";
+            this.btAddCustomers.Text = "Add Customer";
             this.btAddCustomers.UseVisualStyleBackColor = true;
             this.btAddCustomers.Click += new System.EventHandler(this.btAddCustomers_Click);
             // 
@@ -293,6 +292,7 @@
             this.Controls.Add(this.groupBox3);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
+            this.Activated += new System.EventHandler(this.MainMenu_Activated);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

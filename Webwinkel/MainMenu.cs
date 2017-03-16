@@ -13,7 +13,7 @@ namespace Webwinkel
     public partial class MainMenu : Form
     {
         WinkelEntities db = new WinkelEntities();
-        
+
         public MainMenu()
         {
             InitializeComponent();
@@ -51,17 +51,5 @@ namespace Webwinkel
             EditCustomer CustomEdit = new EditCustomer(db);
             CustomEdit.Show();
         }
-
-        ////////////TRASH
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        //private void btEditCustomer_Click(object sender, EventArgs e)
-        //{
-        //    EditCustomer CustomEdit = new EditCustomer(db);
-        //    CustomEdit.Show();
-        //}
-
     }
 }

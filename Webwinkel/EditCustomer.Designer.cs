@@ -40,16 +40,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 107);
+            this.textBox1.Location = new System.Drawing.Point(91, 66);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(120, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "ID";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(81, 158);
+            this.textBoxFirstName.Location = new System.Drawing.Point(91, 117);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(120, 20);
             this.textBoxFirstName.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(231, 158);
+            this.textBoxLastName.Location = new System.Drawing.Point(241, 117);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(120, 20);
             this.textBoxLastName.TabIndex = 2;
@@ -65,7 +66,7 @@
             // 
             // textBoxAdress
             // 
-            this.textBoxAdress.Location = new System.Drawing.Point(81, 203);
+            this.textBoxAdress.Location = new System.Drawing.Point(91, 162);
             this.textBoxAdress.Name = "textBoxAdress";
             this.textBoxAdress.Size = new System.Drawing.Size(270, 20);
             this.textBoxAdress.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             // textBoxPhoneNumber
             // 
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(81, 249);
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(91, 208);
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(120, 20);
             this.textBoxPhoneNumber.TabIndex = 4;
@@ -81,7 +82,7 @@
             // 
             // textBoxBankAccount
             // 
-            this.textBoxBankAccount.Location = new System.Drawing.Point(231, 249);
+            this.textBoxBankAccount.Location = new System.Drawing.Point(241, 208);
             this.textBoxBankAccount.Name = "textBoxBankAccount";
             this.textBoxBankAccount.Size = new System.Drawing.Size(120, 20);
             this.textBoxBankAccount.TabIndex = 5;
@@ -89,7 +90,7 @@
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(231, 104);
+            this.btSave.Location = new System.Drawing.Point(241, 63);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(120, 23);
             this.btSave.TabIndex = 6;
@@ -99,7 +100,7 @@
             // 
             // btUpdate
             // 
-            this.btUpdate.Location = new System.Drawing.Point(81, 290);
+            this.btUpdate.Location = new System.Drawing.Point(91, 249);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(270, 23);
             this.btUpdate.TabIndex = 7;
@@ -111,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 380);
+            this.ClientSize = new System.Drawing.Size(454, 361);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.textBoxBankAccount);
@@ -121,7 +122,7 @@
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.textBox1);
             this.Name = "EditCustomer";
-            this.Text = "EditCustomer";
+            this.Text = "Customer Information";
             this.ResumeLayout(false);
             this.PerformLayout();
 
