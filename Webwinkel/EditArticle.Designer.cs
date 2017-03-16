@@ -94,6 +94,7 @@
             this.btUpdateArticle.TabIndex = 6;
             this.btUpdateArticle.Text = "Update";
             this.btUpdateArticle.UseVisualStyleBackColor = true;
+            this.btUpdateArticle.Click += new System.EventHandler(this.btUpdateArticle_Click);
             // 
             // EditArticle
             // 

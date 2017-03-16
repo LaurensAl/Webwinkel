@@ -16,5 +16,10 @@ namespace Webwinkel
         {
             InitializeComponent();
         }
+
+        private void btUpdateArticle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

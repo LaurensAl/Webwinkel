@@ -11,7 +11,7 @@ namespace Webwinkel
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,20 +19,15 @@ namespace Webwinkel
         {
             this.Orders = new HashSet<Order>();
         }
-
+    
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string Lastname { get; set; }
         public string Adress { get; set; }
         public Nullable<int> Phonenumber { get; set; }
         public string Bankaccountnumber { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-
-
-
-
-
     }
 }
