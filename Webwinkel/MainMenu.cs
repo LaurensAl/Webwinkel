@@ -14,16 +14,34 @@ namespace Webwinkel
     {
         WinkelEntities db = new WinkelEntities();//db
 
+
         public MainMenu()//init
         {
             InitializeComponent();
             ListCustomers();
         }
-        private void MainMenu_Activated(object sender, EventArgs e)//refresh window
+        private void MainMenu_Activated(object sender, EventArgs e)//refresh/Refocus MainMenu
         {
             ListCustomers();
+            ListCategories();
+            //ListArticles();
+            //ListOrders();  relevant??
+
         }
-        public void ListCustomers()//startup -> MainMenu
+        public void ListCategories()//startup/refresh
+        {
+            cbCategoriesPr.Items.Clear();
+            foreach (Category categories in db.Categories)
+            {
+                string[] mycategories = { categories.Name };
+
+                ComboBox categorielist = new ComboBox(mycategories);
+                categorielist.Name = categories.ID.ToString();
+                cbCategoriesPr.Items.Add(categorielist);
+            }
+        }
+
+        public void ListCustomers()//startup/refresh
         {
             listView3.Items.Clear();
             foreach (Customer customers in db.Customers)
@@ -37,7 +55,7 @@ namespace Webwinkel
         }
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
         {
-          if (listView3.SelectedItems.Count > 0)
+            if (listView3.SelectedItems.Count > 0)
             {
                 int outcome = 1;
                 int.TryParse(listView3.SelectedItems[0].Name, out outcome);
@@ -48,7 +66,7 @@ namespace Webwinkel
         }
         private void btAddCustomers_Click(object sender, EventArgs e)//addbuttonCus
         {
-            EditCustomer customEdit = new EditCustomer(db);
+            EditCustomer customEdit = new EditCustomer();
             customEdit.Show();
         }
 
@@ -60,11 +78,26 @@ namespace Webwinkel
 
         private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt
         {
-            int outcome = 1;
-            int.TryParse(listView2.SelectedItems[0].Name, out outcome);
-            
-            EditArticle articleEdit = new EditArticle();
-            articleEdit.Show();
+            if (listView2.SelectedItems.Count > 0)
+            {
+                int outcome = 1;
+                int.TryParse(listView2.SelectedItems[0].Name, out outcome);
+                Article article = db.Articles.Find(outcome);
+                Category category = db.Categories.Find(outcome);//kan dit met FK?
+                EditArticle articleEdit = new EditArticle(article, db, category);
+                articleEdit.Show();
+            }
         }
+
+        private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat
+        {
+            EditCategorie categorieEdit = new EditCategorie();
+            categorieEdit.Show();
+        }
+        private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat
+        {
+            //TODO
+        }
+
     }
 }

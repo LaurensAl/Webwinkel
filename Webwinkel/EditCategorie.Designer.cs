@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbCategoryName = new System.Windows.Forms.TextBox();
             this.btAddCategorie = new System.Windows.Forms.Button();
             this.btEditCategorie = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,46 +43,39 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "ID";
             // 
-            // textBox2
+            // tbCategoryName
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 106);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(217, 106);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.tbCategoryName.Location = new System.Drawing.Point(77, 98);
+            this.tbCategoryName.Name = "tbCategoryName";
+            this.tbCategoryName.Size = new System.Drawing.Size(121, 20);
+            this.tbCategoryName.TabIndex = 1;
             // 
             // btAddCategorie
             // 
-            this.btAddCategorie.Location = new System.Drawing.Point(77, 132);
+            this.btAddCategorie.Location = new System.Drawing.Point(204, 67);
             this.btAddCategorie.Name = "btAddCategorie";
-            this.btAddCategorie.Size = new System.Drawing.Size(261, 23);
+            this.btAddCategorie.Size = new System.Drawing.Size(119, 20);
             this.btAddCategorie.TabIndex = 3;
             this.btAddCategorie.Text = "Add Category";
             this.btAddCategorie.UseVisualStyleBackColor = true;
+            this.btAddCategorie.Click += new System.EventHandler(this.btAddCategorie_Click);
             // 
             // btEditCategorie
             // 
-            this.btEditCategorie.Location = new System.Drawing.Point(77, 161);
+            this.btEditCategorie.Location = new System.Drawing.Point(204, 98);
             this.btEditCategorie.Name = "btEditCategorie";
-            this.btEditCategorie.Size = new System.Drawing.Size(261, 23);
+            this.btEditCategorie.Size = new System.Drawing.Size(119, 20);
             this.btEditCategorie.TabIndex = 4;
             this.btEditCategorie.Text = "Update Category";
             this.btEditCategorie.UseVisualStyleBackColor = true;
+            this.btEditCategorie.Click += new System.EventHandler(this.btEditCategorie_Click);
             // 
             // EditCategorie
             // 
             this.ClientSize = new System.Drawing.Size(419, 281);
             this.Controls.Add(this.btEditCategorie);
             this.Controls.Add(this.btAddCategorie);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbCategoryName);
             this.Controls.Add(this.textBox1);
             this.Name = "EditCategorie";
             this.Text = "Category";
@@ -95,8 +87,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbCategoryName;
         private System.Windows.Forms.Button btAddCategorie;
         private System.Windows.Forms.Button btEditCategorie;
     }

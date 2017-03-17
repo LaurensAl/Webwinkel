@@ -64,10 +64,11 @@
             this.btResetOrder = new System.Windows.Forms.Button();
             this.btRemoveRow = new System.Windows.Forms.Button();
             this.btAddCategory = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btEditCategory = new System.Windows.Forms.Button();
+            this.cbCategoriesPr = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -159,7 +160,8 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader18});
             this.listView2.GridLines = true;
             this.listView2.Location = new System.Drawing.Point(22, 19);
             this.listView2.Name = "listView2";
@@ -181,7 +183,7 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Description";
-            this.columnHeader7.Width = 200;
+            this.columnHeader7.Width = 140;
             // 
             // columnHeader8
             // 
@@ -388,30 +390,32 @@
             this.btAddCategory.TabIndex = 10;
             this.btAddCategory.Text = "Add Category";
             this.btAddCategory.UseVisualStyleBackColor = true;
+            this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
             // 
-            // button3
+            // btEditCategory
             // 
-            this.button3.AccessibleName = "";
-            this.button3.Location = new System.Drawing.Point(158, 28);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 20);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Edit Category";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btEditCategory.AccessibleName = "";
+            this.btEditCategory.Location = new System.Drawing.Point(158, 28);
+            this.btEditCategory.Name = "btEditCategory";
+            this.btEditCategory.Size = new System.Drawing.Size(101, 20);
+            this.btEditCategory.TabIndex = 11;
+            this.btEditCategory.Text = "Edit Category";
+            this.btEditCategory.UseVisualStyleBackColor = true;
+            this.btEditCategory.Click += new System.EventHandler(this.btEditCategory_Click);
             // 
-            // comboBox1
+            // cbCategoriesPr
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(55, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 12;
+            this.cbCategoriesPr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategoriesPr.FormattingEnabled = true;
+            this.cbCategoriesPr.Location = new System.Drawing.Point(55, 27);
+            this.cbCategoriesPr.Name = "cbCategoriesPr";
+            this.cbCategoriesPr.Size = new System.Drawing.Size(121, 21);
+            this.cbCategoriesPr.TabIndex = 12;
             // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.cbCategoriesPr);
             this.groupBox5.Location = new System.Drawing.Point(12, 486);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(232, 78);
@@ -423,13 +427,17 @@
             // 
             this.groupBox6.BackColor = System.Drawing.Color.LightGray;
             this.groupBox6.Controls.Add(this.btAddCategory);
-            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Controls.Add(this.btEditCategory);
             this.groupBox6.Location = new System.Drawing.Point(250, 486);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(281, 78);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Categories Management";
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Category";
             // 
             // MainMenu
             // 
@@ -495,10 +503,11 @@
         private System.Windows.Forms.Button btResetOrder;
         private System.Windows.Forms.Button btRemoveRow;
         private System.Windows.Forms.Button btAddCategory;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btEditCategory;
+        private System.Windows.Forms.ComboBox cbCategoriesPr;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
     }
 }
 

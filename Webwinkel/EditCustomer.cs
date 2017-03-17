@@ -31,12 +31,12 @@ namespace Webwinkel
             btSave.Hide();
             this.db = db;
             this.customer = customer;
-            textBox1.Text = this.customer.ID.ToString();
-            textBoxFirstName.Text = this.customer.FirstName;
-            textBoxLastName.Text = this.customer.Lastname;
-            textBoxAdress.Text = this.customer.Adress;
-            textBoxPhoneNumber.Text = this.customer.Phonenumber.ToString();
-            textBoxBankAccount.Text = this.customer.Bankaccountnumber;
+            tbArticleID.Text = customer.ID.ToString();
+            textBoxFirstName.Text = customer.FirstName;
+            textBoxLastName.Text = customer.Lastname;
+            textBoxAdress.Text = customer.Adress;
+            textBoxPhoneNumber.Text = customer.Phonenumber.ToString();
+            textBoxBankAccount.Text = customer.Bankaccountnumber;
         }
         private void btSave_Click(object sender, EventArgs e)//save
         {
@@ -45,36 +45,18 @@ namespace Webwinkel
             db.SaveChanges();
             Close();
         }
-        private void btUpdate_Click(object sender, EventArgs e)
+        private void btUpdate_Click(object sender, EventArgs e)//EditSave
         {
             int outcome;
 
             customer.FirstName = textBoxFirstName.Text;
-            textBoxFirstName.Text = customer.FirstName;
-
             customer.Lastname = textBoxLastName.Text;
-            textBoxLastName.Text = customer.Lastname;
-
             customer.Adress = textBoxAdress.Text;
-            textBoxAdress.Text = customer.Adress;
-
             int.TryParse(textBoxPhoneNumber.Text, out outcome);
             customer.Phonenumber = outcome;
-            textBoxPhoneNumber.Text = customer.Phonenumber.ToString();
-
             customer.Bankaccountnumber = textBoxBankAccount.Text;
-            textBoxBankAccount.Text = customer.Bankaccountnumber;
             db.SaveChanges();
             Close();
-
         }
-
-        ///////////////////Trash
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-     
     }
 }

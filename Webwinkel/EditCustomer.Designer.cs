@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.textBoxAdress = new System.Windows.Forms.TextBox();
@@ -36,17 +35,8 @@
             this.textBoxBankAccount = new System.Windows.Forms.TextBox();
             this.btSave = new System.Windows.Forms.Button();
             this.btUpdate = new System.Windows.Forms.Button();
+            this.tbArticleID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(91, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "ID";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBoxFirstName
             // 
@@ -108,6 +98,14 @@
             this.btUpdate.UseVisualStyleBackColor = true;
             this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
+            // tbArticleID
+            // 
+            this.tbArticleID.Location = new System.Drawing.Point(91, 66);
+            this.tbArticleID.Name = "tbArticleID";
+            this.tbArticleID.ReadOnly = true;
+            this.tbArticleID.Size = new System.Drawing.Size(120, 20);
+            this.tbArticleID.TabIndex = 8;
+            // 
             // EditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,7 +118,7 @@
             this.Controls.Add(this.textBoxAdress);
             this.Controls.Add(this.textBoxLastName);
             this.Controls.Add(this.textBoxFirstName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbArticleID);
             this.Name = "EditCustomer";
             this.Text = "Customer Information";
             this.ResumeLayout(false);
@@ -129,8 +127,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.TextBox textBoxAdress;
@@ -138,5 +134,6 @@
         private System.Windows.Forms.TextBox textBoxBankAccount;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.TextBox tbArticleID;
     }
 }
