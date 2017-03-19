@@ -11,7 +11,12 @@ namespace Webwinkel
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+
+        public static WinkelEntities db = new WinkelEntities();//static db
+
         [STAThread]
+        
         static void Main()
         {
             Application.EnableVisualStyles();

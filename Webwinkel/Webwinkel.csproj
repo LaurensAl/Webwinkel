@@ -72,9 +72,11 @@
     <Compile Include="Article.cs">
       <DependentUpon>ModelWebWinkel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArticleTemp.cs" />
     <Compile Include="Category.cs">
       <DependentUpon>ModelWebWinkel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CategoryTemp.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>ModelWebWinkel.tt</DependentUpon>
     </Compile>

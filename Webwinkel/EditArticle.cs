@@ -12,30 +12,77 @@ namespace Webwinkel
 {
     public partial class EditArticle : Form
     {
-        Article article = new Article();
-        Category category = new Category();
-        WinkelEntities db = new WinkelEntities();
+        Article article;
+        Category category;
+
         public EditArticle()
         {
             InitializeComponent();
         }
-
-        public EditArticle(Article article, WinkelEntities db, Category category)//Article,cotr
+        public EditArticle(WinkelEntities db)
         {
             InitializeComponent();
-            this.db = db;
+            Program.db = db;
+            btUpdateArticle.Hide();
+
+            var cat = from category in db.Categories
+                      where category == article.Category
+                      select category;
+
+            fillCategorie(category);//fill category with method
+        }
+
+        private void fillCategorie(Category category)// look @ EditArticle + 1
+        {
+            Dictionary<int, string> items = new Dictionary<int, string>();
+
+            foreach (Category categories in Program.db.Categories)
+            {
+                items.Add(categories.ID, categories.Name);
+                cbCategories.DataSource = new BindingSource(items, null);
+                cbCategories.ValueMember = "Key";
+                cbCategories.DisplayMember = "Value";
+            }
+        }
+
+        public EditArticle(Article article, WinkelEntities db, Category category)// +3
+        {
+
+            //TODO BRABBEL CODE
+            InitializeComponent();
+            Program.db = db;
             this.article = article;
-            this.category = category; // TODO
+            this.category = category;
             textBoxArticleID.Text = article.ID.ToString();
             textBoxName.Text = article.Name;
             textBoxDescription.Text = article.Description;
             textBoxStock.Text = this.article.Stock.ToString();
-            cbCategories.Text = this.category.Name;// TODO
+
+
+            Dictionary<int, string> items = new Dictionary<int, string>();
+
+            foreach (Category categories in Program.db.Categories)
+            {
+                items.Add(categories.ID, categories.Name);
+                cbCategories.DataSource = new BindingSource(items, null);
+                cbCategories.ValueMember = "Key";
+                cbCategories.DisplayMember = "Value";
+            }
+
+
 
         }
-
         private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit
         {
+
+        }
+        private void btAddArticle_Click(object sender, EventArgs e)//AddArticle
+        {
+            Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
+            article.AddCatID(int.Parse(cbCategories.Name));
+
+            Program.db.SaveChanges();
+            Close();
 
         }
     }

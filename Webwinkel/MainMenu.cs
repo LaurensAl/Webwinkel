@@ -12,7 +12,7 @@ namespace Webwinkel
 {
     public partial class MainMenu : Form
     {
-        WinkelEntities db = new WinkelEntities();//db
+        //WinkelEntities db = new WinkelEntities();//db
 
 
         public MainMenu()//init
@@ -24,27 +24,20 @@ namespace Webwinkel
         {
             ListCustomers();
             ListCategories();
-            //ListArticles();
+            ListArticles();
             //ListOrders();  relevant??
 
         }
         public void ListCategories()//startup/refresh
         {
             cbCategoriesPr.Items.Clear();
-            foreach (Category categories in db.Categories)
-            {
-                string[] mycategories = { categories.Name };
-
-                ComboBox categorielist = new ComboBox(mycategories);
-                categorielist.Name = categories.ID.ToString();
-                cbCategoriesPr.Items.Add(categorielist);
-            }
+           //
         }
 
         public void ListCustomers()//startup/refresh
         {
             listView3.Items.Clear();
-            foreach (Customer customers in db.Customers)
+            foreach (Customer customers in Program.db.Customers)
             {
                 string[] mycustomers = { customers.ID.ToString(), customers.FirstName, customers.Lastname, customers.Adress, customers.Phonenumber.ToString(), customers.Bankaccountnumber };
 
@@ -53,14 +46,28 @@ namespace Webwinkel
                 listView3.Items.Add(customerlist);
             }
         }
+        public void ListArticles()
+        {
+            listView2.Items.Clear();
+            foreach (Article articles in Program.db.Articles)
+            {
+                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Stock.ToString()};
+
+                ListViewItem articleslist = new ListViewItem(myarticles);
+                articleslist.Name = articles.ID.ToString();
+                listView2.Items.Add(articleslist);
+            }
+        }
+
+
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
         {
             if (listView3.SelectedItems.Count > 0)
             {
                 int outcome = 1;
                 int.TryParse(listView3.SelectedItems[0].Name, out outcome);
-                Customer customer = db.Customers.Find(outcome);
-                EditCustomer customeredit = new EditCustomer(customer, db);
+                Customer customer = Program.db.Customers.Find(outcome);
+                EditCustomer customeredit = new EditCustomer(customer, Program.db);
                 customeredit.Show();
             }
         }
@@ -78,25 +85,28 @@ namespace Webwinkel
 
         private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt
         {
+            // TO DOO is onzin!
+
             if (listView2.SelectedItems.Count > 0)
             {
                 int outcome = 1;
                 int.TryParse(listView2.SelectedItems[0].Name, out outcome);
-                Article article = db.Articles.Find(outcome);
-                Category category = db.Categories.Find(outcome);//kan dit met FK?
-                EditArticle articleEdit = new EditArticle(article, db, category);
+                Article article = Program.db.Articles.Find(outcome);
+                Category category = Program.db.Categories.Find(outcome);//kan dit met FK?
+                EditArticle articleEdit = new EditArticle(article, Program.db, category);
                 articleEdit.Show();
             }
         }
 
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat
         {
-            EditCategorie categorieEdit = new EditCategorie();
-            categorieEdit.Show();
+            EditCategorie categorieAdd = new EditCategorie();
+            categorieAdd.Show();
         }
         private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat
         {
-            //TODO
+            EditCategorie categorieEdit = new EditCategorie();
+            categorieEdit.Show();
         }
 
     }

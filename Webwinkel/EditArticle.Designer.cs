@@ -44,6 +44,7 @@
             this.textBoxArticleID.ReadOnly = true;
             this.textBoxArticleID.Size = new System.Drawing.Size(120, 20);
             this.textBoxArticleID.TabIndex = 0;
+            this.textBoxArticleID.Text = "ID";
             // 
             // textBoxName
             // 
@@ -71,6 +72,7 @@
             // 
             // cbCategories
             // 
+            this.cbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategories.FormattingEnabled = true;
             this.cbCategories.Location = new System.Drawing.Point(242, 138);
             this.cbCategories.Name = "cbCategories";
@@ -85,6 +87,7 @@
             this.btAddArticle.TabIndex = 5;
             this.btAddArticle.Text = "Save Article";
             this.btAddArticle.UseVisualStyleBackColor = true;
+            this.btAddArticle.Click += new System.EventHandler(this.btAddArticle_Click);
             // 
             // btUpdateArticle
             // 

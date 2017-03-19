@@ -13,7 +13,7 @@ namespace Webwinkel
     public partial class EditCustomer : Form
     {
         Customer customer = new Customer();
-        WinkelEntities db;
+        //  WinkelEntities db;
 
         public EditCustomer()//default
         {
@@ -23,13 +23,13 @@ namespace Webwinkel
         {
             InitializeComponent();
             btUpdate.Hide();
-            this.db = db;
+            Program.db = db;
         }
-        public EditCustomer(Customer customer, WinkelEntities db)//edit
+        public EditCustomer(Customer customer, WinkelEntities db)//to edit
         {
             InitializeComponent();
             btSave.Hide();
-            this.db = db;
+            Program.db = db;
             this.customer = customer;
             tbArticleID.Text = customer.ID.ToString();
             textBoxFirstName.Text = customer.FirstName;
@@ -38,14 +38,7 @@ namespace Webwinkel
             textBoxPhoneNumber.Text = customer.Phonenumber.ToString();
             textBoxBankAccount.Text = customer.Bankaccountnumber;
         }
-        private void btSave_Click(object sender, EventArgs e)//save
-        {
-            Customer CustomerTemp = new Customer(textBoxFirstName.Text, textBoxLastName.Text, textBoxAdress.Text, Int32.Parse(textBoxPhoneNumber.Text), textBoxBankAccount.Text);
-            db.Customers.Add(CustomerTemp);
-            db.SaveChanges();
-            Close();
-        }
-        private void btUpdate_Click(object sender, EventArgs e)//EditSave
+        private void btUpdate_Click(object sender, EventArgs e)//saveEdit
         {
             int outcome;
 
@@ -55,8 +48,16 @@ namespace Webwinkel
             int.TryParse(textBoxPhoneNumber.Text, out outcome);
             customer.Phonenumber = outcome;
             customer.Bankaccountnumber = textBoxBankAccount.Text;
-            db.SaveChanges();
+            Program.db.SaveChanges();
             Close();
         }
+        private void btSave_Click(object sender, EventArgs e)//saveNew
+        {
+            Customer CustomerTemp = new Customer(textBoxFirstName.Text, textBoxLastName.Text, textBoxAdress.Text, Int32.Parse(textBoxPhoneNumber.Text), textBoxBankAccount.Text);
+            Program.db.Customers.Add(CustomerTemp);
+            Program.db.SaveChanges();
+            Close();
+        }
+
     }
 }
