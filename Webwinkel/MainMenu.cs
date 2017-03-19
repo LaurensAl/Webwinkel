@@ -12,7 +12,8 @@ namespace Webwinkel
 {
     public partial class MainMenu : Form
     {
-        //WinkelEntities db = new WinkelEntities();//db
+
+        //WinkelEntities db = new WinkelEntities();
 
 
         public MainMenu()//init
@@ -25,13 +26,21 @@ namespace Webwinkel
             ListCustomers();
             ListCategories();
             ListArticles();
-            //ListOrders();  relevant??
+            //ListOrders();  
 
         }
         public void ListCategories()//startup/refresh
         {
-            cbCategoriesPr.Items.Clear();
-           //
+            Dictionary<int, string> items = new Dictionary<int, string>();
+
+            foreach (Category category in Program.db.Categories)
+            {
+                items.Add(category.ID, category.Name);
+                cbCategoriesPr.DataSource = new BindingSource(items, null);
+                cbCategoriesPr.ValueMember = "Key";
+                cbCategoriesPr.DisplayMember = "Value";
+
+            }
         }
 
         public void ListCustomers()//startup/refresh
