@@ -66,7 +66,7 @@ namespace Webwinkel
                 listView2.Items.Add(articleslist);
             }
         }
-        
+
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
         {
             if (listView3.SelectedItems.Count > 0)
@@ -112,11 +112,10 @@ namespace Webwinkel
         }
         private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat
         {
-
-            //Category category = (int)cbCategoriesPr.SelectedItem[0], out outcome;
-
-            //EditCategorie categorieEdit = new EditCategorie(category, Program.db);
-            //categorieEdit.Show(cbCategoriesPr);
+            int catID = (int)cbCategoriesPr.SelectedValue;// int var -> typ(int) ->combobox value
+            Category category = Program.db.Categories.Find(catID); // find value ->catID
+            EditCategorie categorieEdit = new EditCategorie(category, Program.db);// obj(catID) + db
+            categorieEdit.Show(cbCategoriesPr);// show form
         }
 
     }

@@ -68,9 +68,6 @@ namespace Webwinkel
                 cbCategories.ValueMember = "Key";
                 cbCategories.DisplayMember = "Value";
             }
-
-
-
         }
         private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit
         {
@@ -78,11 +75,14 @@ namespace Webwinkel
         }
         private void btAddArticle_Click(object sender, EventArgs e)//AddArticle
         {
-            Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
-            article.AddCatID(int.Parse(cbCategories.Name));
+            //Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
+            //// article.AddCatID(int.Parse(cbCategories.Name));
+            //article.AddCatID();
 
-            Program.db.SaveChanges();
-            Close();
+            //int catID = (int)cbCategoriesPr.SelectedValue;
+
+            //Program.db.SaveChanges();
+            //Close();
 
         }
     }

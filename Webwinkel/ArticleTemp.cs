@@ -20,7 +20,7 @@ namespace Webwinkel
         public void AddCatID(int CatID)
         {
             Category category = Program.db.Categories.Find(CatID);
-            //Category.Articles.Join() = ID;
+            category.ID = CategorieID;
             Program.db.SaveChanges();
 
         }
