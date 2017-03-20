@@ -53,8 +53,8 @@ namespace Webwinkel
         }
         private void btSave_Click(object sender, EventArgs e)//saveNew
         {
-            Customer CustomerTemp = new Customer(textBoxFirstName.Text, textBoxLastName.Text, textBoxAdress.Text, Int32.Parse(textBoxPhoneNumber.Text), textBoxBankAccount.Text);
-            Program.db.Customers.Add(CustomerTemp);
+            Customer customerTemp = new Customer(textBoxFirstName.Text, textBoxLastName.Text, textBoxAdress.Text, Int32.Parse(textBoxPhoneNumber.Text), textBoxBankAccount.Text);
+            Program.db.Customers.Add(customerTemp);
             Program.db.SaveChanges();
             Close();
         }

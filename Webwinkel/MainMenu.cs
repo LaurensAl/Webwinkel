@@ -39,7 +39,6 @@ namespace Webwinkel
                 cbCategoriesPr.DataSource = new BindingSource(items, null);
                 cbCategoriesPr.ValueMember = "Key";
                 cbCategoriesPr.DisplayMember = "Value";
-
             }
         }
 
@@ -60,15 +59,14 @@ namespace Webwinkel
             listView2.Items.Clear();
             foreach (Article articles in Program.db.Articles)
             {
-                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Stock.ToString()};
+                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Stock.ToString() };
 
                 ListViewItem articleslist = new ListViewItem(myarticles);
                 articleslist.Name = articles.ID.ToString();
                 listView2.Items.Add(articleslist);
             }
         }
-
-
+        
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
         {
             if (listView3.SelectedItems.Count > 0)
@@ -88,7 +86,7 @@ namespace Webwinkel
 
         private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt
         {
-            EditArticle articleAdd = new EditArticle();
+            EditArticle articleAdd = new EditArticle(Program.db);
             articleAdd.Show();
         }
 
@@ -109,13 +107,16 @@ namespace Webwinkel
 
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat
         {
-            EditCategorie categorieAdd = new EditCategorie();
+            EditCategorie categorieAdd = new EditCategorie(Program.db);
             categorieAdd.Show();
         }
         private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat
         {
-            EditCategorie categorieEdit = new EditCategorie();
-            categorieEdit.Show();
+
+            //Category category = (int)cbCategoriesPr.SelectedItem[0], out outcome;
+
+            //EditCategorie categorieEdit = new EditCategorie(category, Program.db);
+            //categorieEdit.Show(cbCategoriesPr);
         }
 
     }

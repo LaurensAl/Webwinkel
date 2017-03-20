@@ -25,7 +25,7 @@ namespace Webwinkel
             Program.db = db;
             btUpdateArticle.Hide();
 
-            var cat = from category in db.Categories
+            var cat = from category in Program.db.Categories
                       where category == article.Category
                       select category;
 

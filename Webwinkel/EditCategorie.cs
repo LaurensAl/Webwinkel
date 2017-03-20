@@ -13,7 +13,7 @@ namespace Webwinkel
     public partial class EditCategorie : Form
     {
         Category category;
-       //Winkelentities db;
+        //Winkelentities db;
 
         public EditCategorie()//default
         {
@@ -23,6 +23,7 @@ namespace Webwinkel
         {
             InitializeComponent();
             btEditCategorie.Hide();
+            btAddCategorie.Hide();
             Program.db = db;
         }
 
@@ -45,7 +46,7 @@ namespace Webwinkel
 
         private void btEditCategorie_Click(object sender, EventArgs e)//saveEdit
         {
-            Category categoryTemp = new Category(tbCategoryName.Text);
+            category.Name = tbCategoryName.Text;
             Program.db.SaveChanges();
             Close();
         }
