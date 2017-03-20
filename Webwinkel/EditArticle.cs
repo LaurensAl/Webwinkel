@@ -76,11 +76,9 @@ namespace Webwinkel
         private void btAddArticle_Click(object sender, EventArgs e)//AddArticle
         {
 
-           // int catid = (int)cbCategories.SelectedValue;
             Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
-            // article.AddCatID(int.Parse(cbCategories.Name));
+            Program.db.Articles.Add(artnew);
             artnew.AddCatID((int)cbCategories.SelectedValue);
-
             Program.db.SaveChanges();
             Close();
 

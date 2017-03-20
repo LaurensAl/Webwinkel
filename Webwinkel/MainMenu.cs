@@ -59,14 +59,13 @@ namespace Webwinkel
             listView2.Items.Clear();
             foreach (Article articles in Program.db.Articles)
             {
-                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Stock.ToString() };
-
+            
+                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Description, articles.Stock.ToString(), articles.ToString() };
                 ListViewItem articleslist = new ListViewItem(myarticles);
                 articleslist.Name = articles.ID.ToString();
                 listView2.Items.Add(articleslist);
             }
         }
-
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
         {
             if (listView3.SelectedItems.Count > 0)

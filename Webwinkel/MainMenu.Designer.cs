@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.sbarticle = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,6 +42,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btEditArticle = new System.Windows.Forms.Button();
             this.btAddToOrder = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.btEditCustomer = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbOrderAmount = new System.Windows.Forms.TextBox();
             this.listView4 = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -68,7 +70,7 @@
             this.cbCategoriesPr = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,12 +79,12 @@
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // sbarticle
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 20);
-            this.textBox1.TabIndex = 4;
+            this.sbarticle.Location = new System.Drawing.Point(28, 46);
+            this.sbarticle.Name = "sbarticle";
+            this.sbarticle.Size = new System.Drawing.Size(179, 20);
+            this.sbarticle.TabIndex = 4;
             // 
             // button1
             // 
@@ -145,7 +147,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.sbarticle);
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.Location = new System.Drawing.Point(537, 12);
             this.groupBox1.Name = "groupBox1";
@@ -173,7 +175,7 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Article ID";
-            this.columnHeader5.Width = 80;
+            this.columnHeader5.Width = 58;
             // 
             // columnHeader6
             // 
@@ -187,8 +189,13 @@
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Amount in stock";
+            this.columnHeader8.Text = "Stock";
             this.columnHeader8.Width = 100;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "Category";
+            this.columnHeader18.Width = 72;
             // 
             // groupBox2
             // 
@@ -207,7 +214,7 @@
             // btEditArticle
             // 
             this.btEditArticle.AccessibleName = "";
-            this.btEditArticle.Location = new System.Drawing.Point(387, 203);
+            this.btEditArticle.Location = new System.Drawing.Point(396, 203);
             this.btEditArticle.Name = "btEditArticle";
             this.btEditArticle.Size = new System.Drawing.Size(101, 20);
             this.btEditArticle.TabIndex = 7;
@@ -228,7 +235,7 @@
             // btAddArticle
             // 
             this.btAddArticle.AccessibleName = "";
-            this.btAddArticle.Location = new System.Drawing.Point(238, 203);
+            this.btAddArticle.Location = new System.Drawing.Point(266, 203);
             this.btAddArticle.Name = "btAddArticle";
             this.btAddArticle.Size = new System.Drawing.Size(101, 20);
             this.btAddArticle.TabIndex = 6;
@@ -316,6 +323,8 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.tbOrderAmount);
             this.groupBox4.Controls.Add(this.listView4);
             this.groupBox4.Controls.Add(this.btResetOrder);
             this.groupBox4.Controls.Add(this.btRemoveRow);
@@ -325,6 +334,16 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Your Current Order";
+            // 
+            // tbOrderAmount
+            // 
+            this.tbOrderAmount.Location = new System.Drawing.Point(202, 19);
+            this.tbOrderAmount.Name = "tbOrderAmount";
+            this.tbOrderAmount.ReadOnly = true;
+            this.tbOrderAmount.Size = new System.Drawing.Size(30, 20);
+            this.tbOrderAmount.TabIndex = 5;
+            this.tbOrderAmount.Text = "0";
+            this.tbOrderAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // listView4
             // 
@@ -343,28 +362,32 @@
             // 
             // columnHeader14
             // 
+            this.columnHeader14.DisplayIndex = 1;
             this.columnHeader14.Text = "Article ID";
-            this.columnHeader14.Width = 80;
+            this.columnHeader14.Width = 64;
             // 
             // columnHeader15
             // 
+            this.columnHeader15.DisplayIndex = 2;
             this.columnHeader15.Text = "Name";
-            this.columnHeader15.Width = 90;
+            this.columnHeader15.Width = 120;
             // 
             // columnHeader16
             // 
+            this.columnHeader16.DisplayIndex = 3;
             this.columnHeader16.Text = "Description";
             this.columnHeader16.Width = 200;
             // 
             // columnHeader17
             // 
-            this.columnHeader17.Text = "Amount in stock";
-            this.columnHeader17.Width = 100;
+            this.columnHeader17.DisplayIndex = 0;
+            this.columnHeader17.Text = "Amount";
+            this.columnHeader17.Width = 69;
             // 
             // btResetOrder
             // 
             this.btResetOrder.AccessibleName = "";
-            this.btResetOrder.Location = new System.Drawing.Point(387, 19);
+            this.btResetOrder.Location = new System.Drawing.Point(396, 17);
             this.btResetOrder.Name = "btResetOrder";
             this.btResetOrder.Size = new System.Drawing.Size(101, 20);
             this.btResetOrder.TabIndex = 5;
@@ -374,7 +397,7 @@
             // btRemoveRow
             // 
             this.btRemoveRow.AccessibleName = "";
-            this.btRemoveRow.Location = new System.Drawing.Point(238, 19);
+            this.btRemoveRow.Location = new System.Drawing.Point(266, 17);
             this.btRemoveRow.Name = "btRemoveRow";
             this.btRemoveRow.Size = new System.Drawing.Size(101, 20);
             this.btRemoveRow.TabIndex = 9;
@@ -435,9 +458,14 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Categories Management";
             // 
-            // columnHeader18
+            // label2
             // 
-            this.columnHeader18.Text = "Category";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(97, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Total Items in Order";
             // 
             // MainMenu
             // 
@@ -459,6 +487,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -467,7 +496,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox sbarticle;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -508,6 +537,8 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.TextBox tbOrderAmount;
+        private System.Windows.Forms.Label label2;
     }
 }
 
