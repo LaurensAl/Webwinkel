@@ -9,8 +9,6 @@ namespace Webwinkel
     public partial class Article
     {
         
-
-
         public Article(string name, string description, int stock)//cotr
         {
             Name = name;
@@ -20,7 +18,7 @@ namespace Webwinkel
         public void AddCatID(int CatID)
         {
             Category category = Program.db.Categories.Find(CatID);
-            category.ID = CategorieID;
+            CategorieID = category.ID;
             Program.db.SaveChanges();
 
         }

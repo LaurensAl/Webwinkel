@@ -8,13 +8,11 @@ namespace Webwinkel
 {
     public partial class Category
     {
-        
-       
         public Category(string name)
         {
             Name = name;
         }
 
     }
- 
+
 }
