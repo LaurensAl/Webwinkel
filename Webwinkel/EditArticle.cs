@@ -47,31 +47,22 @@ namespace Webwinkel
 
         public EditArticle(Article article, WinkelEntities db, Category category)// +3
         {
+            //todo
 
-            //TODO BRABBEL CODE
-            InitializeComponent();
-            Program.db = db;
-            this.article = article;
-            this.category = category;
-            textBoxArticleID.Text = article.ID.ToString();
-            textBoxName.Text = article.Name;
-            textBoxDescription.Text = article.Description;
-            textBoxStock.Text = this.article.Stock.ToString();
-
-
-            Dictionary<int, string> items = new Dictionary<int, string>();
-
-            foreach (Category categories in Program.db.Categories)
-            {
-                items.Add(categories.ID, categories.Name);
-                cbCategories.DataSource = new BindingSource(items, null);
-                cbCategories.ValueMember = "Key";
-                cbCategories.DisplayMember = "Value";
-            }
+            fillCategorie(category);
         }
         private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit
         {
+            int outcome;
 
+            article.Name = textBoxName.Text;
+            article.Description = textBoxDescription.Text;
+            int.TryParse(textBoxStock.Text, out outcome);
+            article.Stock = outcome;
+            category.ID = (int)cbCategories.SelectedValue;
+            
+            Program.db.SaveChanges();
+            Close();
         }
         private void btAddArticle_Click(object sender, EventArgs e)//AddArticle
         {

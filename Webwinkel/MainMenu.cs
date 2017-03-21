@@ -26,7 +26,7 @@ namespace Webwinkel
             ListCustomers();
             ListCategories();
             ListArticles();
-            //ListOrders();  
+            ListOrders();
 
         }
         public void ListCategories()//startup/refresh
@@ -56,16 +56,29 @@ namespace Webwinkel
         }
         public void ListArticles()
         {
-            listView2.Items.Clear();
+            listViewArticles.Items.Clear();
             foreach (Article articles in Program.db.Articles)
             {
-            
-                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Description, articles.Stock.ToString(), articles.ToString() };
+                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Description, articles.Stock.ToString(), articles.CategorieID.ToString() };
                 ListViewItem articleslist = new ListViewItem(myarticles);
                 articleslist.Name = articles.ID.ToString();
-                listView2.Items.Add(articleslist);
+                listViewArticles.Items.Add(articleslist);
             }
         }
+        public void ListOrders()
+        {
+            //TO DOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+            //listViewOrders.Items.Clear();
+            //foreach (Order orders in Program.db.Orders)
+            //{
+            //    string[] myorders = { orders.ID.ToString(), orders.OrdersArticles.ToString() };
+            //    ListViewItem orderslist = new ListViewItem(myorders);
+            //    orderslist.Name = orders.ID.ToString();
+            //    listViewArticles.Items.Add(orderslist);
+            //}
+
+        }
+
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
         {
             if (listView3.SelectedItems.Count > 0)
@@ -91,17 +104,9 @@ namespace Webwinkel
 
         private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt
         {
-            // TO DOO is onzin!
+            EditArticle articleAdd = new EditArticle(Program.db);
+            articleAdd.Show();
 
-            if (listView2.SelectedItems.Count > 0)
-            {
-                int outcome = 1;
-                int.TryParse(listView2.SelectedItems[0].Name, out outcome);
-                Article article = Program.db.Articles.Find(outcome);
-                Category category = Program.db.Categories.Find(outcome);//kan dit met FK?
-                EditArticle articleEdit = new EditArticle(article, Program.db, category);
-                articleEdit.Show();
-            }
         }
 
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat
@@ -117,5 +122,15 @@ namespace Webwinkel
             categorieEdit.Show(cbCategoriesPr);// show form
         }
 
+        private void btAddToOrder_Click(object sender, EventArgs e)
+        {
+////// Add order + articles
+
+
+
+
+
+        }
+        }
     }
-}
+

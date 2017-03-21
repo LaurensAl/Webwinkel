@@ -37,7 +37,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.listViewArticles = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,7 +58,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbOrderAmount = new System.Windows.Forms.TextBox();
-            this.listView4 = new System.Windows.Forms.ListView();
+            this.listViewOrders = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -156,21 +156,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search For Your Article";
             // 
-            // listView2
+            // listViewArticles
             // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewArticles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader18});
-            this.listView2.GridLines = true;
-            this.listView2.Location = new System.Drawing.Point(22, 19);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(475, 168);
-            this.listView2.TabIndex = 5;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listViewArticles.FullRowSelect = true;
+            this.listViewArticles.GridLines = true;
+            this.listViewArticles.Location = new System.Drawing.Point(22, 19);
+            this.listViewArticles.Name = "listViewArticles";
+            this.listViewArticles.Size = new System.Drawing.Size(475, 168);
+            this.listViewArticles.TabIndex = 5;
+            this.listViewArticles.UseCompatibleStateImageBehavior = false;
+            this.listViewArticles.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader5
             // 
@@ -203,7 +204,7 @@
             this.groupBox2.Controls.Add(this.btEditArticle);
             this.groupBox2.Controls.Add(this.btAddToOrder);
             this.groupBox2.Controls.Add(this.btAddArticle);
-            this.groupBox2.Controls.Add(this.listView2);
+            this.groupBox2.Controls.Add(this.listViewArticles);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(519, 242);
@@ -231,6 +232,7 @@
             this.btAddToOrder.TabIndex = 5;
             this.btAddToOrder.Text = "Add to Order";
             this.btAddToOrder.UseVisualStyleBackColor = true;
+            this.btAddToOrder.Click += new System.EventHandler(this.btAddToOrder_Click);
             // 
             // btAddArticle
             // 
@@ -325,7 +327,7 @@
             this.groupBox4.BackColor = System.Drawing.Color.LightGray;
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.tbOrderAmount);
-            this.groupBox4.Controls.Add(this.listView4);
+            this.groupBox4.Controls.Add(this.listViewOrders);
             this.groupBox4.Controls.Add(this.btResetOrder);
             this.groupBox4.Controls.Add(this.btRemoveRow);
             this.groupBox4.Location = new System.Drawing.Point(12, 260);
@@ -337,7 +339,7 @@
             // 
             // tbOrderAmount
             // 
-            this.tbOrderAmount.Location = new System.Drawing.Point(202, 19);
+            this.tbOrderAmount.Location = new System.Drawing.Point(202, 21);
             this.tbOrderAmount.Name = "tbOrderAmount";
             this.tbOrderAmount.ReadOnly = true;
             this.tbOrderAmount.Size = new System.Drawing.Size(30, 20);
@@ -345,20 +347,21 @@
             this.tbOrderAmount.Text = "0";
             this.tbOrderAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // listView4
+            // listViewOrders
             // 
-            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader14,
             this.columnHeader15,
             this.columnHeader16,
             this.columnHeader17});
-            this.listView4.GridLines = true;
-            this.listView4.Location = new System.Drawing.Point(22, 60);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(475, 154);
-            this.listView4.TabIndex = 8;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.Details;
+            this.listViewOrders.FullRowSelect = true;
+            this.listViewOrders.GridLines = true;
+            this.listViewOrders.Location = new System.Drawing.Point(22, 60);
+            this.listViewOrders.Name = "listViewOrders";
+            this.listViewOrders.Size = new System.Drawing.Size(475, 154);
+            this.listViewOrders.TabIndex = 8;
+            this.listViewOrders.UseCompatibleStateImageBehavior = false;
+            this.listViewOrders.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader14
             // 
@@ -387,7 +390,7 @@
             // btResetOrder
             // 
             this.btResetOrder.AccessibleName = "";
-            this.btResetOrder.Location = new System.Drawing.Point(396, 17);
+            this.btResetOrder.Location = new System.Drawing.Point(396, 21);
             this.btResetOrder.Name = "btResetOrder";
             this.btResetOrder.Size = new System.Drawing.Size(101, 20);
             this.btResetOrder.TabIndex = 5;
@@ -397,7 +400,7 @@
             // btRemoveRow
             // 
             this.btRemoveRow.AccessibleName = "";
-            this.btRemoveRow.Location = new System.Drawing.Point(266, 17);
+            this.btRemoveRow.Location = new System.Drawing.Point(266, 21);
             this.btRemoveRow.Name = "btRemoveRow";
             this.btRemoveRow.Size = new System.Drawing.Size(101, 20);
             this.btRemoveRow.TabIndex = 9;
@@ -461,7 +464,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 21);
+            this.label2.Location = new System.Drawing.Point(97, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 10;
@@ -505,7 +508,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView listViewArticles;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
@@ -524,7 +527,7 @@
         private System.Windows.Forms.Button btAddArticle;
         private System.Windows.Forms.Button btEditArticle;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ListView listViewOrders;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
