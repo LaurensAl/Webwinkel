@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sbarticle = new System.Windows.Forms.TextBox();
+            this.tbArticle = new System.Windows.Forms.TextBox();
             this.btsearch = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listviewSearch = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,7 +47,7 @@
             this.btEditArticle = new System.Windows.Forms.Button();
             this.btAddToOrder = new System.Windows.Forms.Button();
             this.btAddArticle = new System.Windows.Forms.Button();
-            this.listView3 = new System.Windows.Forms.ListView();
+            this.listViewCust = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -79,12 +79,12 @@
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // sbarticle
+            // tbArticle
             // 
-            this.sbarticle.Location = new System.Drawing.Point(28, 46);
-            this.sbarticle.Name = "sbarticle";
-            this.sbarticle.Size = new System.Drawing.Size(179, 20);
-            this.sbarticle.TabIndex = 4;
+            this.tbArticle.Location = new System.Drawing.Point(28, 46);
+            this.tbArticle.Name = "tbArticle";
+            this.tbArticle.Size = new System.Drawing.Size(179, 20);
+            this.tbArticle.TabIndex = 4;
             // 
             // btsearch
             // 
@@ -95,24 +95,24 @@
             this.btsearch.TabIndex = 1;
             this.btsearch.Text = "Search Article Name";
             this.btsearch.UseVisualStyleBackColor = true;
-            this.btsearch.Click += new System.EventHandler(this.button1_Click);
+            this.btsearch.Click += new System.EventHandler(this.btsearch_Click);
             // 
-            // listView1
+            // listviewSearch
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listviewSearch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(28, 86);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(500, 167);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listviewSearch.FullRowSelect = true;
+            this.listviewSearch.GridLines = true;
+            this.listviewSearch.Location = new System.Drawing.Point(28, 86);
+            this.listviewSearch.Name = "listviewSearch";
+            this.listviewSearch.Size = new System.Drawing.Size(500, 167);
+            this.listviewSearch.TabIndex = 2;
+            this.listviewSearch.UseCompatibleStateImageBehavior = false;
+            this.listviewSearch.View = System.Windows.Forms.View.Details;
+            //this.listviewSearch.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -149,8 +149,8 @@
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
             this.groupBox1.Controls.Add(this.btsearch);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.sbarticle);
-            this.groupBox1.Controls.Add(this.listView1);
+            this.groupBox1.Controls.Add(this.tbArticle);
+            this.groupBox1.Controls.Add(this.listviewSearch);
             this.groupBox1.Location = new System.Drawing.Point(537, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(558, 285);
@@ -247,22 +247,22 @@
             this.btAddArticle.UseVisualStyleBackColor = true;
             this.btAddArticle.Click += new System.EventHandler(this.btAddArticle_Click);
             // 
-            // listView3
+            // listViewCust
             // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewCust.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11,
             this.columnHeader12,
             this.columnHeader13});
-            this.listView3.FullRowSelect = true;
-            this.listView3.GridLines = true;
-            this.listView3.Location = new System.Drawing.Point(28, 50);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(500, 190);
-            this.listView3.TabIndex = 5;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
+            this.listViewCust.FullRowSelect = true;
+            this.listViewCust.GridLines = true;
+            this.listViewCust.Location = new System.Drawing.Point(28, 50);
+            this.listViewCust.Name = "listViewCust";
+            this.listViewCust.Size = new System.Drawing.Size(500, 190);
+            this.listViewCust.TabIndex = 5;
+            this.listViewCust.UseCompatibleStateImageBehavior = false;
+            this.listViewCust.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader9
             // 
@@ -315,7 +315,7 @@
             // 
             this.groupBox3.BackColor = System.Drawing.Color.LightGray;
             this.groupBox3.Controls.Add(this.btAddCustomers);
-            this.groupBox3.Controls.Add(this.listView3);
+            this.groupBox3.Controls.Add(this.listViewCust);
             this.groupBox3.Controls.Add(this.btEditCustomer);
             this.groupBox3.Location = new System.Drawing.Point(537, 307);
             this.groupBox3.Name = "groupBox3";
@@ -407,6 +407,7 @@
             this.btResetOrder.TabIndex = 5;
             this.btResetOrder.Text = "Reset Order";
             this.btResetOrder.UseVisualStyleBackColor = true;
+            this.btResetOrder.Click += new System.EventHandler(this.btResetOrder_Click);
             // 
             // btRemoveRow
             // 
@@ -417,6 +418,7 @@
             this.btRemoveRow.TabIndex = 9;
             this.btRemoveRow.Text = "Remove row";
             this.btRemoveRow.UseVisualStyleBackColor = true;
+            this.btRemoveRow.Click += new System.EventHandler(this.btRemoveRow_Click);
             // 
             // btAddCategory
             // 
@@ -501,9 +503,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox sbarticle;
+        private System.Windows.Forms.TextBox tbArticle;
         private System.Windows.Forms.Button btsearch;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listviewSearch;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -516,7 +518,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ListView listViewCust;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;

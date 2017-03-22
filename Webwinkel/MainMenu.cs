@@ -25,7 +25,7 @@ namespace Webwinkel
             ListCustomers();
             ListCategories();
             ListArticles();
-           // ListOrders();
+            // ListOrders();
 
         }
 
@@ -45,14 +45,14 @@ namespace Webwinkel
 
         public void ListCustomers()//startup/refresh                                    //WORKS
         {
-            listView3.Items.Clear();
+            listViewCust.Items.Clear();
             foreach (Customer customers in Program.db.Customers)
             {
                 string[] mycustomers = { customers.ID.ToString(), customers.FirstName, customers.Lastname, customers.Adress, customers.Phonenumber.ToString(), customers.Bankaccountnumber };
 
                 ListViewItem customerlist = new ListViewItem(mycustomers);
                 customerlist.Name = customers.ID.ToString();
-                listView3.Items.Add(customerlist);
+                listViewCust.Items.Add(customerlist);
             }
         }
         public void ListArticles()//startup/refresh                                                      //WORKS
@@ -83,10 +83,10 @@ namespace Webwinkel
 
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus              //WORKS
         {
-            if (listView3.SelectedItems.Count > 0)
+            if (listViewCust.SelectedItems.Count > 0)
             {
                 int outcome = 1;
-                int.TryParse(listView3.SelectedItems[0].Name, out outcome);
+                int.TryParse(listViewCust.SelectedItems[0].Name, out outcome);
                 Customer customer = Program.db.Customers.Find(outcome);
                 EditCustomer customeredit = new EditCustomer(customer, Program.db);
                 customeredit.Show();
@@ -113,7 +113,7 @@ namespace Webwinkel
                 Article article = Program.db.Articles.Find(outcome);
                 EditArticle articleedit = new EditArticle(Program.db, article);
                 articleedit.Show();
-              }
+            }
         }
         ////////////////////////////////////////////////////////////////Buttons Category
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat                        //WORKS
@@ -133,21 +133,57 @@ namespace Webwinkel
         {
             ////// Add order + articles
 
-
-            ////////////////////////////////////////////////////////////////Buttons Search
-
-
+        }
+        private void btRemoveRow_Click(object sender, EventArgs e)
+        {
+            //remove order
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btResetOrder_Click(object sender, EventArgs e)
         {
-
+            //reset order
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        ////////////////////////////////////////////////////////////////Buttons Search
+
+        private void btsearch_Click(object sender, EventArgs e)
         {
+
+            if (tbArticle != null)
+            {
+                string artsearchterm = tbArticle.Text;
+
+                var vararticle = from article in Program.db.Articles
+                                 where article.Name.Contains(artsearchterm)
+                                 select article;
+
+
+                if (!artsearchterm.Any())
+                {
+                    listviewSearch.Items.Clear();
+                    MessageBox.Show("No Article under that name!");
+                }
+                else
+                {
+                    
+                    foreach (Article article in vararticle)
+                    {
+                        listviewSearch.Items.Clear();
+                        string[] myarticle = { article.ID.ToString(), article.Name, article.Description, article.Stock.ToString()};
+
+                        ListViewItem searcharticle = new ListViewItem(myarticle);
+                        searcharticle.Name = article.ID.ToString();
+                        listviewSearch.Items.Add(searcharticle);
+                    }
+                }
+            }
+
+
+
 
         }
     }
 }
+
+
 
