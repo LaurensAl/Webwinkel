@@ -12,22 +12,20 @@ namespace Webwinkel
 {
     public partial class EditCategorie : Form
     {
-        Category category;
-        //Winkelentities db;
+        Category category = new Category();
 
         public EditCategorie()//default
         {
             InitializeComponent();
         }
-        public EditCategorie(WinkelEntities db)// to save
+        public EditCategorie(WinkelEntities db)// to save                                       //WORKS
         {
             InitializeComponent();
-            btEditCategorie.Hide();
-            btAddCategorie.Hide();
+            btUpdateCategorie.Hide();
             Program.db = db;
         }
 
-        public EditCategorie(Category category, WinkelEntities db)//to edit
+        public EditCategorie(Category category, WinkelEntities db)//to edit                     //WORKS
         {
             InitializeComponent();
             Program.db = db;
@@ -36,7 +34,7 @@ namespace Webwinkel
             tbCategoryName.Text = category.Name;
         }
 
-        private void btAddCategorie_Click(object sender, EventArgs e)//saveNew
+        private void btAddCategorie_Click(object sender, EventArgs e)//saveNew                  //WORKS
         {
             Category categoryTemp = new Category(tbCategoryName.Text);
             Program.db.Categories.Add(categoryTemp);
@@ -44,8 +42,9 @@ namespace Webwinkel
             Close();
         }
 
-        private void btEditCategorie_Click(object sender, EventArgs e)//saveEdit
+        private void btEditCategorie_Click(object sender, EventArgs e)//saveEdit                //WORKS
         {
+            Category categoryTemp = new Category();
             category.Name = tbCategoryName.Text;
             Program.db.SaveChanges();
             Close();

@@ -12,8 +12,8 @@ namespace Webwinkel
 {
     public partial class EditArticle : Form
     {
-        Article article;
-        Category category;
+        Article article = new Article();
+        Category category = new Category();
 
         public EditArticle()
         {
@@ -24,15 +24,26 @@ namespace Webwinkel
             InitializeComponent();
             Program.db = db;
             btUpdateArticle.Hide();
+                     
+            fillCategorie();//fill category with method
+        }
+        public EditArticle(WinkelEntities db, Category category, Article article)// +2
+        {
+            InitializeComponent();
+            btAddArticle.Hide();
+            Program.db = db;
+            this.article = article;
+            textBoxArticleID.Text = article.ID.ToString();
+            textBoxName.Text = article.Name;
+            textBoxDescription.Text = article.Description;
+            textBoxDescription.Text = article.Stock.ToString();
+            this.category = category;
+            cbCategories.Text = category.Name;
 
-            var cat = from category in Program.db.Categories
-                      where category == article.Category
-                      select category;
-
-            fillCategorie(category);//fill category with method
         }
 
-        private void fillCategorie(Category category)// look @ EditArticle + 1
+
+        private void fillCategorie()// look @ EditArticle + 1
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
@@ -45,22 +56,14 @@ namespace Webwinkel
             }
         }
 
-        public EditArticle(Article article, WinkelEntities db, Category category)// +3
-        {
-            //todo
-
-            fillCategorie(category);
-        }
+       
         private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit
         {
-            int outcome;
-
             article.Name = textBoxName.Text;
             article.Description = textBoxDescription.Text;
-            int.TryParse(textBoxStock.Text, out outcome);
-            article.Stock = outcome;
-            category.ID = (int)cbCategories.SelectedValue;
-            
+            article.Stock = int.Parse(textBoxStock.Text);
+            category.ID = (int)cbCategories.SelectedItem;
+
             Program.db.SaveChanges();
             Close();
         }

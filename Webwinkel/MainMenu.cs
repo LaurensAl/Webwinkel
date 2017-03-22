@@ -12,24 +12,20 @@ namespace Webwinkel
 {
     public partial class MainMenu : Form
     {
-
-        //WinkelEntities db = new WinkelEntities();
-
-
         public MainMenu()//init
         {
             InitializeComponent();
             ListCustomers();
         }
-        private void MainMenu_Activated(object sender, EventArgs e)//refresh/Refocus MainMenu
+        private void MainMenu_Activated(object sender, EventArgs e)//refresh/Refocus MainMenu       //WORKS
         {
             ListCustomers();
             ListCategories();
             ListArticles();
-            ListOrders();
+           // ListOrders();
 
         }
-        public void ListCategories()//startup/refresh
+        public void ListCategories()//startup/refresh                                   //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
@@ -42,7 +38,7 @@ namespace Webwinkel
             }
         }
 
-        public void ListCustomers()//startup/refresh
+        public void ListCustomers()//startup/refresh                                    //WORKS
         {
             listView3.Items.Clear();
             foreach (Customer customers in Program.db.Customers)
@@ -54,7 +50,7 @@ namespace Webwinkel
                 listView3.Items.Add(customerlist);
             }
         }
-        public void ListArticles()
+        public void ListArticles()                                                      //WORKS
         {
             listViewArticles.Items.Clear();
             foreach (Article articles in Program.db.Articles)
@@ -79,7 +75,7 @@ namespace Webwinkel
 
         }
 
-        private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus
+        private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus              //WORKS
         {
             if (listView3.SelectedItems.Count > 0)
             {
@@ -90,13 +86,13 @@ namespace Webwinkel
                 customeredit.Show();
             }
         }
-        private void btAddCustomers_Click(object sender, EventArgs e)//addbuttonCus
+        private void btAddCustomers_Click(object sender, EventArgs e)//addbuttonCus                     //WORKS
         {
             EditCustomer customEdit = new EditCustomer();
             customEdit.Show();
         }
 
-        private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt
+        private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt                       //WORKS
         {
             EditArticle articleAdd = new EditArticle(Program.db);
             articleAdd.Show();
@@ -104,17 +100,30 @@ namespace Webwinkel
 
         private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt
         {
-            EditArticle articleAdd = new EditArticle(Program.db);
-            articleAdd.Show();
+            if (listViewArticles.SelectedItems.Count > 0)
+            {
+                int outcome = 1;
+                int.TryParse(listView3.SelectedItems[0].Name, out outcome);
+                Customer customer = Program.db.Customers.Find(outcome);
+                EditCustomer customeredit = new EditCustomer(customer, Program.db);
+                customeredit.Show();
+                //TO DO
 
+
+                int catID = (int)cbCategoriesPr.SelectedValue;// int var -> typ(int) ->combobox value
+                Category category = Program.db.Categories.Find(catID);
+
+                //     EditArticle articleAdd = new EditArticle(Program.db, category, article);
+                // articleAdd.Show();
+            }
         }
 
-        private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat
+        private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat                        //WORKS
         {
             EditCategorie categorieAdd = new EditCategorie(Program.db);
             categorieAdd.Show();
         }
-        private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat
+        private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat                       //WORKS
         {
             int catID = (int)cbCategoriesPr.SelectedValue;// int var -> typ(int) ->combobox value
             Category category = Program.db.Categories.Find(catID); // find value ->catID
@@ -124,13 +133,13 @@ namespace Webwinkel
 
         private void btAddToOrder_Click(object sender, EventArgs e)
         {
-////// Add order + articles
+            ////// Add order + articles
 
 
 
 
 
-        }
         }
     }
+}
 

@@ -15,17 +15,18 @@ namespace Webwinkel
         Customer customer = new Customer();
         //  WinkelEntities db;
 
-        public EditCustomer()//default
-        {
-            InitializeComponent();
-        }
-        public EditCustomer(WinkelEntities db)//to add
+        public EditCustomer()// to add                                                  //WORKS
         {
             InitializeComponent();
             btUpdate.Hide();
-            Program.db = db;
         }
-        public EditCustomer(Customer customer, WinkelEntities db)//to edit
+        //public EditCustomer(WinkelEntities db)//to add
+        //{
+        //    InitializeComponent();
+        //    btUpdate.Hide();
+        //    Program.db = db;
+        //}
+        public EditCustomer(Customer customer, WinkelEntities db)//to edit              //WORKS
         {
             InitializeComponent();
             btSave.Hide();

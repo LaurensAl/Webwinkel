@@ -31,7 +31,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tbCategoryName = new System.Windows.Forms.TextBox();
             this.btAddCategorie = new System.Windows.Forms.Button();
-            this.btEditCategorie = new System.Windows.Forms.Button();
+            this.btUpdateCategorie = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -60,20 +60,20 @@
             this.btAddCategorie.UseVisualStyleBackColor = true;
             this.btAddCategorie.Click += new System.EventHandler(this.btAddCategorie_Click);
             // 
-            // btEditCategorie
+            // btUpdateCategorie
             // 
-            this.btEditCategorie.Location = new System.Drawing.Point(204, 98);
-            this.btEditCategorie.Name = "btEditCategorie";
-            this.btEditCategorie.Size = new System.Drawing.Size(119, 20);
-            this.btEditCategorie.TabIndex = 4;
-            this.btEditCategorie.Text = "Update Category";
-            this.btEditCategorie.UseVisualStyleBackColor = true;
-            this.btEditCategorie.Click += new System.EventHandler(this.btEditCategorie_Click);
+            this.btUpdateCategorie.Location = new System.Drawing.Point(204, 98);
+            this.btUpdateCategorie.Name = "btUpdateCategorie";
+            this.btUpdateCategorie.Size = new System.Drawing.Size(119, 20);
+            this.btUpdateCategorie.TabIndex = 4;
+            this.btUpdateCategorie.Text = "Update Category";
+            this.btUpdateCategorie.UseVisualStyleBackColor = true;
+            this.btUpdateCategorie.Click += new System.EventHandler(this.btEditCategorie_Click);
             // 
             // EditCategorie
             // 
             this.ClientSize = new System.Drawing.Size(419, 281);
-            this.Controls.Add(this.btEditCategorie);
+            this.Controls.Add(this.btUpdateCategorie);
             this.Controls.Add(this.btAddCategorie);
             this.Controls.Add(this.tbCategoryName);
             this.Controls.Add(this.textBox1);
@@ -89,6 +89,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox tbCategoryName;
         private System.Windows.Forms.Button btAddCategorie;
-        private System.Windows.Forms.Button btEditCategorie;
+        private System.Windows.Forms.Button btUpdateCategorie;
     }
 }
