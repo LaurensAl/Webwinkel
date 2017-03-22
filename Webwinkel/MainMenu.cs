@@ -12,12 +12,15 @@ namespace Webwinkel
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()//init
+        //public static Category category;
+        //public static Customer customer;
+
+        public MainMenu()//init without data                                                        //WORKS, DUH!
         {
             InitializeComponent();
-            ListCustomers();
         }
-        private void MainMenu_Activated(object sender, EventArgs e)//refresh/Refocus MainMenu       //WORKS
+        //////////////////////////////////////////////refresh/Refocus MainMenu
+        private void MainMenu_Activated(object sender, EventArgs e)                                     //WORKS
         {
             ListCustomers();
             ListCategories();
@@ -25,6 +28,8 @@ namespace Webwinkel
            // ListOrders();
 
         }
+
+        //////////////////////////////////////////////Methods for fillingup data -> MainMenu
         public void ListCategories()//startup/refresh                                   //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
@@ -50,7 +55,7 @@ namespace Webwinkel
                 listView3.Items.Add(customerlist);
             }
         }
-        public void ListArticles()                                                      //WORKS
+        public void ListArticles()//startup/refresh                                                      //WORKS
         {
             listViewArticles.Items.Clear();
             foreach (Article articles in Program.db.Articles)
@@ -74,6 +79,7 @@ namespace Webwinkel
             //}
 
         }
+        ////////////////////////////////////////////////////////////////Buttons Customer
 
         private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus              //WORKS
         {
@@ -91,33 +97,25 @@ namespace Webwinkel
             EditCustomer customEdit = new EditCustomer();
             customEdit.Show();
         }
-
+        ////////////////////////////////////////////////////////////////Buttons Articles
         private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt                       //WORKS
         {
             EditArticle articleAdd = new EditArticle(Program.db);
             articleAdd.Show();
         }
 
-        private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt
+        private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt                     //WORKS(No category included)
         {
             if (listViewArticles.SelectedItems.Count > 0)
             {
                 int outcome = 1;
-                int.TryParse(listView3.SelectedItems[0].Name, out outcome);
-                Customer customer = Program.db.Customers.Find(outcome);
-                EditCustomer customeredit = new EditCustomer(customer, Program.db);
-                customeredit.Show();
-                //TO DO
-
-
-                int catID = (int)cbCategoriesPr.SelectedValue;// int var -> typ(int) ->combobox value
-                Category category = Program.db.Categories.Find(catID);
-
-                //     EditArticle articleAdd = new EditArticle(Program.db, category, article);
-                // articleAdd.Show();
-            }
+                int.TryParse(listViewArticles.SelectedItems[0].Name, out outcome);
+                Article article = Program.db.Articles.Find(outcome);
+                EditArticle articleedit = new EditArticle(Program.db, article);
+                articleedit.Show();
+              }
         }
-
+        ////////////////////////////////////////////////////////////////Buttons Category
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat                        //WORKS
         {
             EditCategorie categorieAdd = new EditCategorie(Program.db);
@@ -130,14 +128,24 @@ namespace Webwinkel
             EditCategorie categorieEdit = new EditCategorie(category, Program.db);// obj(catID) + db
             categorieEdit.Show(cbCategoriesPr);// show form
         }
-
+        ////////////////////////////////////////////////////////////////Buttons Order
         private void btAddToOrder_Click(object sender, EventArgs e)
         {
             ////// Add order + articles
 
 
+            ////////////////////////////////////////////////////////////////Buttons Search
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

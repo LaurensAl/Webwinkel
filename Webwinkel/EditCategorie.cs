@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Webwinkel
 {
+
+
     public partial class EditCategorie : Form
     {
         Category category = new Category();

@@ -15,35 +15,28 @@ namespace Webwinkel
         Article article = new Article();
         Category category = new Category();
 
-        public EditArticle()
-        {
-            InitializeComponent();
-        }
-        public EditArticle(WinkelEntities db)
+
+        public EditArticle(WinkelEntities db)                                           //WORKS
         {
             InitializeComponent();
             Program.db = db;
             btUpdateArticle.Hide();
-                     
-            fillCategorie();//fill category with method
+            fillCategorie();//fill cat with method
         }
-        public EditArticle(WinkelEntities db, Category category, Article article)// +2
+        public EditArticle(WinkelEntities db, Article article)// +2                     //WORKS (does nog bring up original categorieID, fills it only!)
         {
             InitializeComponent();
             btAddArticle.Hide();
             Program.db = db;
-            this.article = article;
             textBoxArticleID.Text = article.ID.ToString();
             textBoxName.Text = article.Name;
             textBoxDescription.Text = article.Description;
-            textBoxDescription.Text = article.Stock.ToString();
-            this.category = category;
-            cbCategories.Text = category.Name;
+            textBoxStock.Text = article.Stock.ToString();
+            fillCategorie();
 
         }
 
-
-        private void fillCategorie()// look @ EditArticle + 1
+        private void fillCategorie()//method filler cat                                               //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
@@ -55,19 +48,19 @@ namespace Webwinkel
                 cbCategories.DisplayMember = "Value";
             }
         }
-
-       
-        private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit
+        private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit                        //TODO
         {
+
             article.Name = textBoxName.Text;
             article.Description = textBoxDescription.Text;
             article.Stock = int.Parse(textBoxStock.Text);
-            category.ID = (int)cbCategories.SelectedItem;
-
+            int catID = (int)cbCategories.SelectedValue;
+            //Category category = Program.db.Categories.Find(catID);
+            article.CategorieID = catID;///??????does not save data
             Program.db.SaveChanges();
             Close();
         }
-        private void btAddArticle_Click(object sender, EventArgs e)//AddArticle
+        private void btAddArticle_Click(object sender, EventArgs e)//AddArticle                         //WORKS
         {
 
             Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));

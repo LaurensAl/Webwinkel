@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.sbarticle = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btsearch = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,6 +57,7 @@
             this.btEditCustomer = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tbOrderAmount = new System.Windows.Forms.TextBox();
             this.listViewOrders = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,7 +71,6 @@
             this.cbCategoriesPr = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -86,15 +86,16 @@
             this.sbarticle.Size = new System.Drawing.Size(179, 20);
             this.sbarticle.TabIndex = 4;
             // 
-            // button1
+            // btsearch
             // 
-            this.button1.AccessibleName = "";
-            this.button1.Location = new System.Drawing.Point(231, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 20);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Search Article Name";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btsearch.AccessibleName = "";
+            this.btsearch.Location = new System.Drawing.Point(231, 46);
+            this.btsearch.Name = "btsearch";
+            this.btsearch.Size = new System.Drawing.Size(130, 20);
+            this.btsearch.TabIndex = 1;
+            this.btsearch.Text = "Search Article Name";
+            this.btsearch.UseVisualStyleBackColor = true;
+            this.btsearch.Click += new System.EventHandler(this.button1_Click);
             // 
             // listView1
             // 
@@ -111,6 +112,7 @@
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -145,7 +147,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btsearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.sbarticle);
             this.groupBox1.Controls.Add(this.listView1);
@@ -337,6 +339,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Your Current Order";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(97, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Total Items in Order";
+            // 
             // tbOrderAmount
             // 
             this.tbOrderAmount.Location = new System.Drawing.Point(202, 21);
@@ -461,15 +472,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Categories Management";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Total Items in Order";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,7 +502,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox sbarticle;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btsearch;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
