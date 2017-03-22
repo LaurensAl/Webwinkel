@@ -71,12 +71,19 @@
             this.cbCategoriesPr = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btSuppAdd = new System.Windows.Forms.Button();
+            this.btSuppEdit = new System.Windows.Forms.Button();
+            this.cbSupplier = new System.Windows.Forms.ComboBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbArticle
@@ -106,18 +113,17 @@
             this.columnHeader4});
             this.listviewSearch.FullRowSelect = true;
             this.listviewSearch.GridLines = true;
-            this.listviewSearch.Location = new System.Drawing.Point(28, 86);
+            this.listviewSearch.Location = new System.Drawing.Point(22, 86);
             this.listviewSearch.Name = "listviewSearch";
-            this.listviewSearch.Size = new System.Drawing.Size(500, 167);
+            this.listviewSearch.Size = new System.Drawing.Size(500, 101);
             this.listviewSearch.TabIndex = 2;
             this.listviewSearch.UseCompatibleStateImageBehavior = false;
             this.listviewSearch.View = System.Windows.Forms.View.Details;
-            //this.listviewSearch.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Article ID";
-            this.columnHeader1.Width = 100;
+            this.columnHeader1.Width = 90;
             // 
             // columnHeader2
             // 
@@ -127,12 +133,12 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Description";
-            this.columnHeader3.Width = 200;
+            this.columnHeader3.Width = 195;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Amount in Stock";
-            this.columnHeader4.Width = 100;
+            this.columnHeader4.Width = 90;
             // 
             // label1
             // 
@@ -153,7 +159,7 @@
             this.groupBox1.Controls.Add(this.listviewSearch);
             this.groupBox1.Location = new System.Drawing.Point(537, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 285);
+            this.groupBox1.Size = new System.Drawing.Size(558, 202);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search For Your Article";
@@ -317,7 +323,7 @@
             this.groupBox3.Controls.Add(this.btAddCustomers);
             this.groupBox3.Controls.Add(this.listViewCust);
             this.groupBox3.Controls.Add(this.btEditCustomer);
-            this.groupBox3.Location = new System.Drawing.Point(537, 307);
+            this.groupBox3.Location = new System.Drawing.Point(537, 223);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(558, 257);
             this.groupBox3.TabIndex = 6;
@@ -357,6 +363,7 @@
             this.tbOrderAmount.TabIndex = 5;
             this.tbOrderAmount.Text = "0";
             this.tbOrderAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbOrderAmount.TextChanged += new System.EventHandler(this.tbOrderAmount_TextChanged);
             // 
             // listViewOrders
             // 
@@ -423,20 +430,20 @@
             // btAddCategory
             // 
             this.btAddCategory.AccessibleName = "";
-            this.btAddCategory.Location = new System.Drawing.Point(28, 28);
+            this.btAddCategory.Location = new System.Drawing.Point(28, 29);
             this.btAddCategory.Name = "btAddCategory";
-            this.btAddCategory.Size = new System.Drawing.Size(101, 20);
+            this.btAddCategory.Size = new System.Drawing.Size(117, 20);
             this.btAddCategory.TabIndex = 10;
-            this.btAddCategory.Text = "Add Category";
+            this.btAddCategory.Text = "Add New Category";
             this.btAddCategory.UseVisualStyleBackColor = true;
             this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
             // 
             // btEditCategory
             // 
             this.btEditCategory.AccessibleName = "";
-            this.btEditCategory.Location = new System.Drawing.Point(158, 28);
+            this.btEditCategory.Location = new System.Drawing.Point(151, 30);
             this.btEditCategory.Name = "btEditCategory";
-            this.btEditCategory.Size = new System.Drawing.Size(101, 20);
+            this.btEditCategory.Size = new System.Drawing.Size(117, 20);
             this.btEditCategory.TabIndex = 11;
             this.btEditCategory.Text = "Edit Category";
             this.btEditCategory.UseVisualStyleBackColor = true;
@@ -446,7 +453,7 @@
             // 
             this.cbCategoriesPr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategoriesPr.FormattingEnabled = true;
-            this.cbCategoriesPr.Location = new System.Drawing.Point(55, 27);
+            this.cbCategoriesPr.Location = new System.Drawing.Point(55, 29);
             this.cbCategoriesPr.Name = "cbCategoriesPr";
             this.cbCategoriesPr.Size = new System.Drawing.Size(121, 21);
             this.cbCategoriesPr.TabIndex = 12;
@@ -474,6 +481,58 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Categories Management";
             // 
+            // btSuppAdd
+            // 
+            this.btSuppAdd.AccessibleName = "";
+            this.btSuppAdd.Location = new System.Drawing.Point(38, 29);
+            this.btSuppAdd.Name = "btSuppAdd";
+            this.btSuppAdd.Size = new System.Drawing.Size(117, 20);
+            this.btSuppAdd.TabIndex = 12;
+            this.btSuppAdd.Text = "Add New Supplier";
+            this.btSuppAdd.UseVisualStyleBackColor = true;
+            // 
+            // btSuppEdit
+            // 
+            this.btSuppEdit.AccessibleName = "";
+            this.btSuppEdit.Location = new System.Drawing.Point(161, 29);
+            this.btSuppEdit.Name = "btSuppEdit";
+            this.btSuppEdit.Size = new System.Drawing.Size(117, 20);
+            this.btSuppEdit.TabIndex = 12;
+            this.btSuppEdit.Text = "Edit Supplier";
+            this.btSuppEdit.UseVisualStyleBackColor = true;
+            // 
+            // cbSupplier
+            // 
+            this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSupplier.FormattingEnabled = true;
+            this.cbSupplier.Location = new System.Drawing.Point(86, 28);
+            this.cbSupplier.Name = "cbSupplier";
+            this.cbSupplier.Size = new System.Drawing.Size(121, 21);
+            this.cbSupplier.TabIndex = 13;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox7.Controls.Add(this.btSuppAdd);
+            this.groupBox7.Controls.Add(this.btSuppEdit);
+            this.groupBox7.Location = new System.Drawing.Point(800, 486);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(295, 78);
+            this.groupBox7.TabIndex = 10;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Suppliers Management";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox8.Controls.Add(this.cbSupplier);
+            this.groupBox8.Location = new System.Drawing.Point(537, 486);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(257, 78);
+            this.groupBox8.TabIndex = 11;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Preview Suppliers";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,6 +545,8 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox8);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.Activated += new System.EventHandler(this.MainMenu_Activated);
@@ -497,6 +558,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -546,6 +609,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.TextBox tbOrderAmount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btSuppAdd;
+        private System.Windows.Forms.Button btSuppEdit;
+        private System.Windows.Forms.ComboBox cbSupplier;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
     }
 }
 

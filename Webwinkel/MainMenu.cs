@@ -43,7 +43,7 @@ namespace Webwinkel
             }
         }
 
-        public void ListCustomers()//startup/refresh                                    //WORKS
+        public void ListCustomers()//startup/refresh                                                //WORKS
         {
             listViewCust.Items.Clear();
             foreach (Customer customers in Program.db.Customers)
@@ -131,8 +131,15 @@ namespace Webwinkel
         ////////////////////////////////////////////////////////////////Buttons Order
         private void btAddToOrder_Click(object sender, EventArgs e)
         {
-            ////// Add order + articles
+            Article article = new Article();
 
+            if (listViewArticles.SelectedItems.Count != 0)
+            {
+                string[] items = { article.ID.ToString(), article.Name, article.Description };
+                ListViewItem stuff = new ListViewItem(items);
+                article.Name = article.ID.ToString();
+                listViewOrders.Items.Add(stuff);
+            }
         }
         private void btRemoveRow_Click(object sender, EventArgs e)
         {
@@ -143,12 +150,18 @@ namespace Webwinkel
         {
             //reset order
         }
+        ///////////////////////////////////////////////////////////////Counter
+        private void tbOrderAmount_TextChanged(object sender, EventArgs e)
+        {
+            //foreach (listvieworder in listViewOrders) { }
+
+        }
 
         ////////////////////////////////////////////////////////////////Buttons Search
 
         private void btsearch_Click(object sender, EventArgs e)
         {
-
+            listviewSearch.Items.Clear();
             if (tbArticle != null)
             {
                 string artsearchterm = tbArticle.Text;
@@ -165,11 +178,11 @@ namespace Webwinkel
                 }
                 else
                 {
-                    
+
                     foreach (Article article in vararticle)
                     {
-                        listviewSearch.Items.Clear();
-                        string[] myarticle = { article.ID.ToString(), article.Name, article.Description, article.Stock.ToString()};
+
+                        string[] myarticle = { article.ID.ToString(), article.Name, article.Description, article.Stock.ToString() };
 
                         ListViewItem searcharticle = new ListViewItem(myarticle);
                         searcharticle.Name = article.ID.ToString();
@@ -182,6 +195,8 @@ namespace Webwinkel
 
 
         }
+
+
     }
 }
 

@@ -55,7 +55,7 @@ namespace Webwinkel
             article.Description = textBoxDescription.Text;
             article.Stock = int.Parse(textBoxStock.Text);
             int catID = (int)cbCategories.SelectedValue;
-            //Category category = Program.db.Categories.Find(catID);
+            Category category = Program.db.Categories.Find(catID);
             article.CategorieID = catID;///??????does not save data
             Program.db.SaveChanges();
             Close();
