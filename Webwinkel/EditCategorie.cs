@@ -16,7 +16,7 @@ namespace Webwinkel
     {
         Category category = new Category();
 
-        public EditCategorie()//default
+        public EditCategorie()//default NOT used
         {
             InitializeComponent();
         }

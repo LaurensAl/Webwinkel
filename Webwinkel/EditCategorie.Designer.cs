@@ -36,7 +36,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 67);
+            this.textBox1.Location = new System.Drawing.Point(48, 48);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(121, 20);
@@ -45,14 +45,14 @@
             // 
             // tbCategoryName
             // 
-            this.tbCategoryName.Location = new System.Drawing.Point(77, 98);
+            this.tbCategoryName.Location = new System.Drawing.Point(48, 79);
             this.tbCategoryName.Name = "tbCategoryName";
             this.tbCategoryName.Size = new System.Drawing.Size(121, 20);
             this.tbCategoryName.TabIndex = 1;
             // 
             // btAddCategorie
             // 
-            this.btAddCategorie.Location = new System.Drawing.Point(204, 67);
+            this.btAddCategorie.Location = new System.Drawing.Point(175, 48);
             this.btAddCategorie.Name = "btAddCategorie";
             this.btAddCategorie.Size = new System.Drawing.Size(119, 20);
             this.btAddCategorie.TabIndex = 3;
@@ -62,7 +62,7 @@
             // 
             // btUpdateCategorie
             // 
-            this.btUpdateCategorie.Location = new System.Drawing.Point(204, 98);
+            this.btUpdateCategorie.Location = new System.Drawing.Point(175, 79);
             this.btUpdateCategorie.Name = "btUpdateCategorie";
             this.btUpdateCategorie.Size = new System.Drawing.Size(119, 20);
             this.btUpdateCategorie.TabIndex = 4;
@@ -72,7 +72,7 @@
             // 
             // EditCategorie
             // 
-            this.ClientSize = new System.Drawing.Size(419, 281);
+            this.ClientSize = new System.Drawing.Size(359, 161);
             this.Controls.Add(this.btUpdateCategorie);
             this.Controls.Add(this.btAddCategorie);
             this.Controls.Add(this.tbCategoryName);

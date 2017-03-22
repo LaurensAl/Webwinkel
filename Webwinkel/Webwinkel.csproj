@@ -137,6 +137,7 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>ModelWebWinkel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SupplierTemp.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ModelWebWinkel.tt</DependentUpon>
     </Compile>
@@ -148,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditCustomer.resx">
       <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSupplier.resx">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

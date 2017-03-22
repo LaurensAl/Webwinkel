@@ -12,8 +12,6 @@ namespace Webwinkel
 {
     public partial class MainMenu : Form
     {
-        //public static Category category;
-        //public static Customer customer;
 
         public MainMenu()//init without data                                                        //WORKS, DUH!
         {
@@ -25,10 +23,10 @@ namespace Webwinkel
             ListCustomers();
             ListCategories();
             ListArticles();
+            ListSuppliers();
             // ListOrders();
 
         }
-
         //////////////////////////////////////////////Methods for fillingup data -> MainMenu
         public void ListCategories()//startup/refresh                                   //WORKS
         {
@@ -66,6 +64,18 @@ namespace Webwinkel
                 listViewArticles.Items.Add(articleslist);
             }
         }
+        public void ListSuppliers()//startup/refresh                                                      //WORKS
+        {
+            listViewSupplier.Items.Clear();
+            foreach (Supplier suppliers in Program.db.Suppliers)
+            {
+                string[] mysuppliers = { suppliers.ID.ToString(), suppliers.CompanyName, suppliers.Adress, suppliers.PhoneNumber.ToString(), suppliers.EmailAdress };
+                ListViewItem supplierlist = new ListViewItem(mysuppliers);
+                supplierlist.Name = suppliers.ID.ToString();
+                listViewSupplier.Items.Add(supplierlist);
+            }
+        }
+        
         public void ListOrders()
         {
             //TO DOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -128,6 +138,25 @@ namespace Webwinkel
             EditCategorie categorieEdit = new EditCategorie(category, Program.db);// obj(catID) + db
             categorieEdit.Show(cbCategoriesPr);// show form
         }
+        ////////////////////////////////////////////////////////////////Buttons Suppliers
+        private void btSuppAdd_Click(object sender, EventArgs e)
+        {
+            EditSupplier supplierAdd = new EditSupplier(Program.db);
+            supplierAdd.Show();
+        }
+
+        private void btSuppEdit_Click(object sender, EventArgs e)
+        {
+            if (listViewSupplier.SelectedItems.Count > 0)
+            {
+                int outcome = 1;
+                int.TryParse(listViewSupplier.SelectedItems[0].Name, out outcome);
+                Supplier supplier = Program.db.Suppliers.Find(outcome);
+                EditSupplier supplieredit = new EditSupplier(supplier, Program.db);
+                supplieredit.Show();
+            }
+        }
+
         ////////////////////////////////////////////////////////////////Buttons Order
         private void btAddToOrder_Click(object sender, EventArgs e)
         {
@@ -195,7 +224,6 @@ namespace Webwinkel
 
 
         }
-
 
     }
 }

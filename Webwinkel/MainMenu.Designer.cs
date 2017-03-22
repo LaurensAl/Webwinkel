@@ -73,9 +73,13 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btSuppAdd = new System.Windows.Forms.Button();
             this.btSuppEdit = new System.Windows.Forms.Button();
-            this.cbSupplier = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.listViewSupplier = new System.Windows.Forms.ListView();
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,20 +87,19 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbArticle
             // 
-            this.tbArticle.Location = new System.Drawing.Point(28, 46);
+            this.tbArticle.Location = new System.Drawing.Point(22, 24);
             this.tbArticle.Name = "tbArticle";
-            this.tbArticle.Size = new System.Drawing.Size(179, 20);
+            this.tbArticle.Size = new System.Drawing.Size(153, 20);
             this.tbArticle.TabIndex = 4;
             // 
             // btsearch
             // 
             this.btsearch.AccessibleName = "";
-            this.btsearch.Location = new System.Drawing.Point(231, 46);
+            this.btsearch.Location = new System.Drawing.Point(181, 24);
             this.btsearch.Name = "btsearch";
             this.btsearch.Size = new System.Drawing.Size(130, 20);
             this.btsearch.TabIndex = 1;
@@ -113,7 +116,7 @@
             this.columnHeader4});
             this.listviewSearch.FullRowSelect = true;
             this.listviewSearch.GridLines = true;
-            this.listviewSearch.Location = new System.Drawing.Point(22, 86);
+            this.listviewSearch.Location = new System.Drawing.Point(22, 60);
             this.listviewSearch.Name = "listviewSearch";
             this.listviewSearch.Size = new System.Drawing.Size(500, 101);
             this.listviewSearch.TabIndex = 2;
@@ -144,7 +147,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(365, 19);
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(346, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 24);
             this.label1.TabIndex = 3;
@@ -159,7 +163,7 @@
             this.groupBox1.Controls.Add(this.listviewSearch);
             this.groupBox1.Location = new System.Drawing.Point(537, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 202);
+            this.groupBox1.Size = new System.Drawing.Size(558, 175);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search For Your Article";
@@ -265,7 +269,7 @@
             this.listViewCust.GridLines = true;
             this.listViewCust.Location = new System.Drawing.Point(28, 50);
             this.listViewCust.Name = "listViewCust";
-            this.listViewCust.Size = new System.Drawing.Size(500, 190);
+            this.listViewCust.Size = new System.Drawing.Size(500, 116);
             this.listViewCust.TabIndex = 5;
             this.listViewCust.UseCompatibleStateImageBehavior = false;
             this.listViewCust.View = System.Windows.Forms.View.Details;
@@ -298,9 +302,9 @@
             // btAddCustomers
             // 
             this.btAddCustomers.AccessibleName = "";
-            this.btAddCustomers.Location = new System.Drawing.Point(421, 19);
+            this.btAddCustomers.Location = new System.Drawing.Point(288, 19);
             this.btAddCustomers.Name = "btAddCustomers";
-            this.btAddCustomers.Size = new System.Drawing.Size(101, 20);
+            this.btAddCustomers.Size = new System.Drawing.Size(117, 20);
             this.btAddCustomers.TabIndex = 5;
             this.btAddCustomers.Text = "Add Customer";
             this.btAddCustomers.UseVisualStyleBackColor = true;
@@ -309,9 +313,9 @@
             // btEditCustomer
             // 
             this.btEditCustomer.AccessibleName = "";
-            this.btEditCustomer.Location = new System.Drawing.Point(260, 19);
+            this.btEditCustomer.Location = new System.Drawing.Point(411, 19);
             this.btEditCustomer.Name = "btEditCustomer";
-            this.btEditCustomer.Size = new System.Drawing.Size(101, 20);
+            this.btEditCustomer.Size = new System.Drawing.Size(117, 20);
             this.btEditCustomer.TabIndex = 9;
             this.btEditCustomer.Text = "Edit Customer";
             this.btEditCustomer.UseVisualStyleBackColor = true;
@@ -323,9 +327,9 @@
             this.groupBox3.Controls.Add(this.btAddCustomers);
             this.groupBox3.Controls.Add(this.listViewCust);
             this.groupBox3.Controls.Add(this.btEditCustomer);
-            this.groupBox3.Location = new System.Drawing.Point(537, 223);
+            this.groupBox3.Location = new System.Drawing.Point(537, 193);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(558, 257);
+            this.groupBox3.Size = new System.Drawing.Size(558, 191);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Customers Mangement";
@@ -484,54 +488,79 @@
             // btSuppAdd
             // 
             this.btSuppAdd.AccessibleName = "";
-            this.btSuppAdd.Location = new System.Drawing.Point(38, 29);
+            this.btSuppAdd.Location = new System.Drawing.Point(288, 19);
             this.btSuppAdd.Name = "btSuppAdd";
             this.btSuppAdd.Size = new System.Drawing.Size(117, 20);
             this.btSuppAdd.TabIndex = 12;
             this.btSuppAdd.Text = "Add New Supplier";
             this.btSuppAdd.UseVisualStyleBackColor = true;
+            this.btSuppAdd.Click += new System.EventHandler(this.btSuppAdd_Click);
             // 
             // btSuppEdit
             // 
             this.btSuppEdit.AccessibleName = "";
-            this.btSuppEdit.Location = new System.Drawing.Point(161, 29);
+            this.btSuppEdit.Location = new System.Drawing.Point(411, 19);
             this.btSuppEdit.Name = "btSuppEdit";
             this.btSuppEdit.Size = new System.Drawing.Size(117, 20);
             this.btSuppEdit.TabIndex = 12;
             this.btSuppEdit.Text = "Edit Supplier";
             this.btSuppEdit.UseVisualStyleBackColor = true;
-            // 
-            // cbSupplier
-            // 
-            this.cbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSupplier.FormattingEnabled = true;
-            this.cbSupplier.Location = new System.Drawing.Point(86, 28);
-            this.cbSupplier.Name = "cbSupplier";
-            this.cbSupplier.Size = new System.Drawing.Size(121, 21);
-            this.cbSupplier.TabIndex = 13;
+            this.btSuppEdit.Click += new System.EventHandler(this.btSuppEdit_Click);
             // 
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox7.Controls.Add(this.listViewSupplier);
             this.groupBox7.Controls.Add(this.btSuppAdd);
             this.groupBox7.Controls.Add(this.btSuppEdit);
-            this.groupBox7.Location = new System.Drawing.Point(800, 486);
+            this.groupBox7.Location = new System.Drawing.Point(537, 390);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(295, 78);
+            this.groupBox7.Size = new System.Drawing.Size(558, 174);
             this.groupBox7.TabIndex = 10;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Suppliers Management";
             // 
-            // groupBox8
+            // listViewSupplier
             // 
-            this.groupBox8.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox8.Controls.Add(this.cbSupplier);
-            this.groupBox8.Location = new System.Drawing.Point(537, 486);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(257, 78);
-            this.groupBox8.TabIndex = 11;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Preview Suppliers";
+            this.listViewSupplier.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21,
+            this.columnHeader22,
+            this.columnHeader23});
+            this.listViewSupplier.FullRowSelect = true;
+            this.listViewSupplier.GridLines = true;
+            this.listViewSupplier.Location = new System.Drawing.Point(28, 50);
+            this.listViewSupplier.Name = "listViewSupplier";
+            this.listViewSupplier.Size = new System.Drawing.Size(500, 107);
+            this.listViewSupplier.TabIndex = 10;
+            this.listViewSupplier.UseCompatibleStateImageBehavior = false;
+            this.listViewSupplier.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "ID";
+            this.columnHeader19.Width = 40;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "CompanyName";
+            this.columnHeader20.Width = 90;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Adress";
+            this.columnHeader21.Width = 90;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Phonenumber";
+            this.columnHeader22.Width = 155;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "E-mail";
+            this.columnHeader23.Width = 100;
             // 
             // MainMenu
             // 
@@ -546,7 +575,6 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox8);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.Activated += new System.EventHandler(this.MainMenu_Activated);
@@ -559,7 +587,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -611,9 +638,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btSuppAdd;
         private System.Windows.Forms.Button btSuppEdit;
-        private System.Windows.Forms.ComboBox cbSupplier;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.ListView listViewSupplier;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
     }
 }
 
