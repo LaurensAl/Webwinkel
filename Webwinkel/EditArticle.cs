@@ -23,12 +23,10 @@ namespace Webwinkel
             StartPosition = FormStartPosition.CenterScreen;
             Program.db = db;
             btUpdateArticle.Hide();
-            tbCurrentCat.Hide();
-            lbCurrentCat.Hide();
             fillCategorie();//fill cat with method
             fillSupplier();
         }
-        public EditArticle(Article article, Category category, Supplier supplier, WinkelEntities db)// +4                     //WORKS
+        public EditArticle(Article article, Category category, WinkelEntities db)// +4                     //WORKS
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -36,12 +34,12 @@ namespace Webwinkel
             Program.db = db;
             this.category = category;
             this.article = article;
-            this.supplier = supplier;
+            //this.supplier = supplier;
             textBoxArticleID.Text = article.ID.ToString();
             textBoxName.Text = article.Name;
             textBoxDescription.Text = article.Description;
             textBoxStock.Text = article.Stock.ToString();
-            tbCurrentCat.Text = category.Name;
+
             fillCategorie();//fill cat with method
         }
 
@@ -52,10 +50,16 @@ namespace Webwinkel
             foreach (Category categories in Program.db.Categories)
             {
                 items.Add(categories.ID, categories.Name);
-                cbCategories.DataSource = new BindingSource(items, null);
-                cbCategories.ValueMember = "Key";
-                cbCategories.DisplayMember = "Value";
             }
+            cbCategories.DataSource = new BindingSource(items, null);
+            cbCategories.ValueMember = "Key";
+            cbCategories.DisplayMember = "Value";
+            if (category.ID != null)// to check if value exists, works only in editform
+            {
+                cbCategories.SelectedValue = category.ID;
+            }
+
+
         }
         private void fillSupplier()//method filler supp                                              //WORKS
         {
@@ -64,9 +68,14 @@ namespace Webwinkel
             foreach (Supplier supplier in Program.db.Suppliers)
             {
                 items.Add(supplier.ID, supplier.CompanyName);
-                cbSupplier.DataSource = new BindingSource(items, null);
-                cbSupplier.ValueMember = "Key";
-                cbSupplier.DisplayMember = "Value";
+            }
+            cbSupplier.DataSource = new BindingSource(items, null);
+            cbSupplier.ValueMember = "Key";
+            cbSupplier.DisplayMember = "Value";
+
+            if (supplier.ID != null)// to check if value exists, works only in editform
+            {
+                cbSupplier.SelectedValue = supplier.ID;
             }
         }
 

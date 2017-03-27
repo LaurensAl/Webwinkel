@@ -123,8 +123,8 @@ namespace Webwinkel
                 Article article = Program.db.Articles.Find(outcome);
                 Category category = Program.db.Categories.Find(article.CategorieID);
                 //Supplier supplier;//not finished
-                //EditArticle articleedit = new EditArticle(article, category, supplier, Program.db);
-               // articleedit.Show();
+                EditArticle articleedit = new EditArticle(article, category, Program.db);
+               articleedit.Show();
             }
         }
         ////////////////////////////////////////////////////////////////Buttons Category
