@@ -28,7 +28,7 @@ namespace Webwinkel
 
         }
         //////////////////////////////////////////////Methods for fillingup data -> MainMenu
-        public void ListCategories()//startup/refresh                                   //WORKS
+        public void ListCategories()//startup/refresh                                               //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
@@ -114,7 +114,7 @@ namespace Webwinkel
             articleAdd.Show();
         }
 
-        private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt                     //WORKS(No category included)
+        private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt                     //Supplier needs to update
         {
             if (listViewArticles.SelectedItems.Count > 0)
             {
@@ -122,8 +122,9 @@ namespace Webwinkel
                 int.TryParse(listViewArticles.SelectedItems[0].Name, out outcome);
                 Article article = Program.db.Articles.Find(outcome);
                 Category category = Program.db.Categories.Find(article.CategorieID);
-                EditArticle articleedit = new EditArticle(article, category, Program.db);
-                articleedit.Show();
+                //Supplier supplier;//not finished
+                //EditArticle articleedit = new EditArticle(article, category, supplier, Program.db);
+               // articleedit.Show();
             }
         }
         ////////////////////////////////////////////////////////////////Buttons Category
@@ -183,12 +184,11 @@ namespace Webwinkel
         private void tbOrderAmount_TextChanged(object sender, EventArgs e)
         {
             //foreach (listvieworder in listViewOrders) { }
-
         }
 
         ////////////////////////////////////////////////////////////////Buttons Search
 
-        private void btsearch_Click(object sender, EventArgs e)
+        private void btsearch_Click(object sender, EventArgs e)                                     //WORKS
         {
             listviewSearch.Items.Clear();
             if (tbArticle != null)
@@ -204,6 +204,7 @@ namespace Webwinkel
                 {
                     listviewSearch.Items.Clear();
                     MessageBox.Show("No Article under that name!");
+                    btsearch.Text = "Search Article Name";
                 }
                 else
                 {
@@ -216,17 +217,16 @@ namespace Webwinkel
                         ListViewItem searcharticle = new ListViewItem(myarticle);
                         searcharticle.Name = article.ID.ToString();
                         listviewSearch.Items.Add(searcharticle);
+                        btsearch.Text = "Search Other Article";
                     }
+
                 }
             }
-
-
-
-
         }
-
     }
+
 }
+
 
 
 

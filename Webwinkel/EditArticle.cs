@@ -14,6 +14,7 @@ namespace Webwinkel
     {
         Article article = new Article();
         Category category = new Category();
+        Supplier supplier = new Supplier();
 
 
         public EditArticle(WinkelEntities db)                                           //WORKS
@@ -25,8 +26,9 @@ namespace Webwinkel
             tbCurrentCat.Hide();
             lbCurrentCat.Hide();
             fillCategorie();//fill cat with method
+            fillSupplier();
         }
-        public EditArticle(Article article, Category category, WinkelEntities db)// +2                     //WORKS
+        public EditArticle(Article article, Category category, Supplier supplier, WinkelEntities db)// +4                     //WORKS
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -34,6 +36,7 @@ namespace Webwinkel
             Program.db = db;
             this.category = category;
             this.article = article;
+            this.supplier = supplier;
             textBoxArticleID.Text = article.ID.ToString();
             textBoxName.Text = article.Name;
             textBoxDescription.Text = article.Description;
@@ -54,6 +57,20 @@ namespace Webwinkel
                 cbCategories.DisplayMember = "Value";
             }
         }
+        private void fillSupplier()//method filler supp                                              //WORKS
+        {
+            Dictionary<int, string> items = new Dictionary<int, string>();
+
+            foreach (Supplier supplier in Program.db.Suppliers)
+            {
+                items.Add(supplier.ID, supplier.CompanyName);
+                cbSupplier.DataSource = new BindingSource(items, null);
+                cbSupplier.ValueMember = "Key";
+                cbSupplier.DisplayMember = "Value";
+            }
+        }
+
+
         private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit                        //WORKS
         {
             int value;
@@ -72,19 +89,28 @@ namespace Webwinkel
             else
             {
                 MessageBox.Show("Stock can only be a number, please try again!");
-                return;
+
             }
 
         }
         private void btAddArticle_Click(object sender, EventArgs e)//AddArticle                         //WORKS
         {
+            int value;
 
-            Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
-            Program.db.Articles.Add(artnew);
-            artnew.AddCatID((int)cbCategories.SelectedValue);
-            Program.db.SaveChanges();
-            Close();
+            if (int.TryParse(textBoxStock.Text, out value))
+            {
+                Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
+                Program.db.Articles.Add(artnew);
+                artnew.AddCatID((int)cbCategories.SelectedValue);
+                Program.db.SaveChanges();
+                Close();
 
+            }
+            else
+            {
+                MessageBox.Show("Stock can only be a number, please try again!");
+
+            }
         }
     }
 }

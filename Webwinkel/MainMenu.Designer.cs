@@ -42,7 +42,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btEditArticle = new System.Windows.Forms.Button();
             this.btAddToOrder = new System.Windows.Forms.Button();
@@ -91,7 +91,7 @@
             // 
             // tbArticle
             // 
-            this.tbArticle.Location = new System.Drawing.Point(22, 24);
+            this.tbArticle.Location = new System.Drawing.Point(28, 25);
             this.tbArticle.Name = "tbArticle";
             this.tbArticle.Size = new System.Drawing.Size(153, 20);
             this.tbArticle.TabIndex = 4;
@@ -99,9 +99,9 @@
             // btsearch
             // 
             this.btsearch.AccessibleName = "";
-            this.btsearch.Location = new System.Drawing.Point(181, 24);
+            this.btsearch.Location = new System.Drawing.Point(187, 25);
             this.btsearch.Name = "btsearch";
-            this.btsearch.Size = new System.Drawing.Size(130, 20);
+            this.btsearch.Size = new System.Drawing.Size(159, 20);
             this.btsearch.TabIndex = 1;
             this.btsearch.Text = "Search Article Name";
             this.btsearch.UseVisualStyleBackColor = true;
@@ -116,7 +116,7 @@
             this.columnHeader4});
             this.listviewSearch.FullRowSelect = true;
             this.listviewSearch.GridLines = true;
-            this.listviewSearch.Location = new System.Drawing.Point(22, 60);
+            this.listviewSearch.Location = new System.Drawing.Point(28, 64);
             this.listviewSearch.Name = "listviewSearch";
             this.listviewSearch.Size = new System.Drawing.Size(500, 101);
             this.listviewSearch.TabIndex = 2;
@@ -148,7 +148,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(346, 19);
+            this.label1.Location = new System.Drawing.Point(352, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 24);
             this.label1.TabIndex = 3;
@@ -175,7 +175,7 @@
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader18});
+            this.chCategory});
             this.listViewArticles.FullRowSelect = true;
             this.listViewArticles.GridLines = true;
             this.listViewArticles.Location = new System.Drawing.Point(22, 19);
@@ -204,10 +204,10 @@
             this.columnHeader8.Text = "Stock";
             this.columnHeader8.Width = 90;
             // 
-            // columnHeader18
+            // chCategory
             // 
-            this.columnHeader18.Text = "Category";
-            this.columnHeader18.Width = 70;
+            this.chCategory.Text = "Category";
+            this.chCategory.Width = 70;
             // 
             // groupBox2
             // 
@@ -331,7 +331,7 @@
             this.groupBox3.Size = new System.Drawing.Size(558, 191);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Customers Mangement";
+            this.groupBox3.Text = "Customers Management";
             // 
             // groupBox4
             // 
@@ -632,7 +632,7 @@
         private System.Windows.Forms.ComboBox cbCategoriesPr;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader chCategory;
         private System.Windows.Forms.TextBox tbOrderAmount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btSuppAdd;
