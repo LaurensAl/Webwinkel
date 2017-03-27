@@ -16,17 +16,16 @@ namespace Webwinkel
         Category category = new Category();
         Supplier supplier = new Supplier();
 
-
-        public EditArticle(WinkelEntities db)                                           //WORKS
+        public EditArticle(WinkelEntities db)     // to Add article                                                              //WORKS
         {
-            InitializeComponent();
-            StartPosition = FormStartPosition.CenterScreen;
-            Program.db = db;
-            btUpdateArticle.Hide();
+            InitializeComponent();// required for startup
+            StartPosition = FormStartPosition.CenterScreen; //pops up screen in center
+            Program.db = db;// db connection
+            btUpdateArticle.Hide();//hide update button
             fillCategorie();//fill cat with method
-            fillSupplier();
+            fillSupplier();//fill sup with method
         }
-        public EditArticle(Article article, Category category, WinkelEntities db)// +4                     //WORKS
+        public EditArticle(Article article, Category category, Supplier supplier, WinkelEntities db)// +4, to Edit article               //WORKS
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -34,31 +33,28 @@ namespace Webwinkel
             Program.db = db;
             this.category = category;
             this.article = article;
-            //this.supplier = supplier;
+            this.supplier = supplier;
             textBoxArticleID.Text = article.ID.ToString();
             textBoxName.Text = article.Name;
             textBoxDescription.Text = article.Description;
             textBoxStock.Text = article.Stock.ToString();
-
-            fillCategorie();//fill cat with method
+            fillCategorie();
+            cbCategories.SelectedValue = category.ID;// fills combobox(CAT)with existing value;
+            fillSupplier();
+            cbSupplier.SelectedValue = supplier.ID;// fills combobox(SUP)with existing value;
         }
 
-        private void fillCategorie()//method filler cat                                               //WORKS
+        private void fillCategorie()//method filler category                                               //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
             foreach (Category categories in Program.db.Categories)
             {
                 items.Add(categories.ID, categories.Name);
+                cbCategories.DataSource = new BindingSource(items, null);
+                cbCategories.ValueMember = "Key";
+                cbCategories.DisplayMember = "Value";
             }
-            cbCategories.DataSource = new BindingSource(items, null);
-            cbCategories.ValueMember = "Key";
-            cbCategories.DisplayMember = "Value";
-            if (category.ID != null)// to check if value exists, works only in editform
-            {
-                cbCategories.SelectedValue = category.ID;
-            }
-
 
         }
         private void fillSupplier()//method filler supp                                              //WORKS
@@ -68,17 +64,11 @@ namespace Webwinkel
             foreach (Supplier supplier in Program.db.Suppliers)
             {
                 items.Add(supplier.ID, supplier.CompanyName);
-            }
-            cbSupplier.DataSource = new BindingSource(items, null);
-            cbSupplier.ValueMember = "Key";
-            cbSupplier.DisplayMember = "Value";
-
-            if (supplier.ID != null)// to check if value exists, works only in editform
-            {
-                cbSupplier.SelectedValue = supplier.ID;
+                cbSupplier.DataSource = new BindingSource(items, null);
+                cbSupplier.ValueMember = "Key";
+                cbSupplier.DisplayMember = "Value";
             }
         }
-
 
         private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit                        //WORKS
         {
@@ -92,13 +82,14 @@ namespace Webwinkel
                 article.Stock = int.Parse(textBoxStock.Text);
                 Category category = Program.db.Categories.Find(cbCategories.SelectedValue);
                 article.CategorieID = category.ID;
+                Supplier supplier = Program.db.Suppliers.Find(cbSupplier.SelectedValue);
+                article.SupplierID = supplier.ID;
                 Program.db.SaveChanges();
                 Close();
             }
             else
             {
                 MessageBox.Show("Stock can only be a number, please try again!");
-
             }
 
         }
@@ -111,6 +102,7 @@ namespace Webwinkel
                 Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
                 Program.db.Articles.Add(artnew);
                 artnew.AddCatID((int)cbCategories.SelectedValue);
+                artnew.AddSupID((int)cbSupplier.SelectedValue);
                 Program.db.SaveChanges();
                 Close();
 

@@ -31,6 +31,5 @@ namespace Webwinkel
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrdersArticle> OrdersArticles { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

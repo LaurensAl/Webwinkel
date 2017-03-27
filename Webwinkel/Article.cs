@@ -18,7 +18,6 @@ namespace Webwinkel
         public Article()
         {
             this.OrdersArticles = new HashSet<OrdersArticle>();
-            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ID { get; set; }
@@ -26,11 +25,11 @@ namespace Webwinkel
         public string Description { get; set; }
         public Nullable<int> Stock { get; set; }
         public int CategorieID { get; set; }
+        public int SupplierID { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual Supplier Supplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdersArticle> OrdersArticles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

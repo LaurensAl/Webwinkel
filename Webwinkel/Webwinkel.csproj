@@ -70,15 +70,15 @@
       <DependentUpon>AllOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Article.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ArticleTemp.cs" />
     <Compile Include="Category.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoryTemp.cs" />
     <Compile Include="Customer.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CustomerTemp.cs" />
     <Compile Include="EditArticle.cs">
@@ -111,35 +111,32 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModelWebWinkel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelWebWinkel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelWebWinkel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelWebWinkel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelWebWinkel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Order.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OrdersArticle.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Supplier.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SupplierTemp.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ModelWebWinkel.tt</DependentUpon>
+    <Compile Include="WinkelModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinkelModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WinkelModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinkelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WinkelModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinkelModel.edmx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EditArticle.resx">
       <DependentUpon>EditArticle.cs</DependentUpon>
@@ -165,13 +162,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="ModelWebWinkel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelWebWinkel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ModelWebWinkel.edmx.diagram">
-      <DependentUpon>ModelWebWinkel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,6 +172,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="WinkelModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WinkelModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WinkelModel.edmx.diagram">
+      <DependentUpon>WinkelModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -190,15 +187,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelWebWinkel.Context.tt">
+    <Content Include="WinkelModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelWebWinkel.edmx</DependentUpon>
-      <LastGenOutput>ModelWebWinkel.Context.cs</LastGenOutput>
+      <DependentUpon>WinkelModel.edmx</DependentUpon>
+      <LastGenOutput>WinkelModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelWebWinkel.tt">
+    <Content Include="WinkelModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelWebWinkel.edmx</DependentUpon>
-      <LastGenOutput>ModelWebWinkel.cs</LastGenOutput>
+      <DependentUpon>WinkelModel.edmx</DependentUpon>
+      <LastGenOutput>WinkelModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

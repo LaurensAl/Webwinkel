@@ -122,12 +122,12 @@ namespace Webwinkel
                 int.TryParse(listViewArticles.SelectedItems[0].Name, out outcome);
                 Article article = Program.db.Articles.Find(outcome);
                 Category category = Program.db.Categories.Find(article.CategorieID);
-                //Supplier supplier;//not finished
-                EditArticle articleedit = new EditArticle(article, category, Program.db);
-               articleedit.Show();
+                Supplier supplier = Program.db.Suppliers.Find(article.SupplierID);
+                EditArticle articleedit = new EditArticle(article, category, supplier, Program.db);
+                articleedit.Show();
             }
         }
-        ////////////////////////////////////////////////////////////////Buttons Category
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Category
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat                        //WORKS
         {
             EditCategorie categorieAdd = new EditCategorie(Program.db);
@@ -140,7 +140,7 @@ namespace Webwinkel
             EditCategorie categorieEdit = new EditCategorie(category, Program.db);// obj(catID) + db
             categorieEdit.Show(cbCategoriesPr);// show form
         }
-        ////////////////////////////////////////////////////////////////Buttons Suppliers
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Suppliers
         private void btSuppAdd_Click(object sender, EventArgs e)
         {
             EditSupplier supplierAdd = new EditSupplier(Program.db);
@@ -158,7 +158,7 @@ namespace Webwinkel
             }
         }
 
-        ////////////////////////////////////////////////////////////////Buttons Order
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Order
         private void btAddToOrder_Click(object sender, EventArgs e)
         {
             Article article = new Article();
@@ -173,20 +173,20 @@ namespace Webwinkel
         }
         private void btRemoveRow_Click(object sender, EventArgs e)
         {
-            //remove order
+            ////////////////////////////remove order
         }
 
         private void btResetOrder_Click(object sender, EventArgs e)
         {
-            //reset order
+            ////////////////////////////////reset order
         }
-        ///////////////////////////////////////////////////////////////Counter
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Counter
         private void tbOrderAmount_TextChanged(object sender, EventArgs e)
         {
             //foreach (listvieworder in listViewOrders) { }
         }
 
-        ////////////////////////////////////////////////////////////////Buttons Search
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Search
 
         private void btsearch_Click(object sender, EventArgs e)                                     //WORKS
         {

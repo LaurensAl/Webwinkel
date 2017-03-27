@@ -22,7 +22,13 @@ namespace Webwinkel
             Program.db.SaveChanges();
 
         }
+        public void AddSupID(int SupID)
+        {
+            Supplier supplier = Program.db.Suppliers.Find(SupID);
+            SupplierID = supplier.ID;
+            Program.db.SaveChanges();
 
+        }
 
 
 
