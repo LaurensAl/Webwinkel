@@ -101,11 +101,9 @@ namespace Webwinkel
             {
                 Article artnew = new Article(textBoxName.Text, textBoxDescription.Text, int.Parse(textBoxStock.Text));
                 Program.db.Articles.Add(artnew);
-                artnew.AddCatID((int)cbCategories.SelectedValue);
-                artnew.AddSupID((int)cbSupplier.SelectedValue);
+                artnew.AddFK((int)cbCategories.SelectedValue, (int)cbSupplier.SelectedValue);
                 Program.db.SaveChanges();
                 Close();
-
             }
             else
             {
