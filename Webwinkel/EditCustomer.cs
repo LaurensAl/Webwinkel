@@ -33,7 +33,7 @@ namespace Webwinkel
             textBoxPhoneNumber.Text = customer.Phonenumber.ToString();
             textBoxBankAccount.Text = customer.Bankaccountnumber;
         }
-        private void btUpdate_Click(object sender, EventArgs e)//saveEdit
+        private void btUpdate_Click(object sender, EventArgs e)//saveEdit               //WORKS
         {
             int outcome;
 
@@ -46,7 +46,7 @@ namespace Webwinkel
             Program.db.SaveChanges();
             Close();
         }
-        private void btSave_Click(object sender, EventArgs e)//saveNew
+        private void btSave_Click(object sender, EventArgs e)//saveNew                  //WORKS
         {
             Customer customerTemp = new Customer(textBoxFirstName.Text, textBoxLastName.Text, textBoxAdress.Text, Int32.Parse(textBoxPhoneNumber.Text), textBoxBankAccount.Text);
             Program.db.Customers.Add(customerTemp);

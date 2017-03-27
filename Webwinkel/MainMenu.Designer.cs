@@ -188,7 +188,6 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Article ID";
-            this.columnHeader5.Width = 58;
             // 
             // columnHeader6
             // 
@@ -203,12 +202,12 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Stock";
-            this.columnHeader8.Width = 100;
+            this.columnHeader8.Width = 90;
             // 
             // columnHeader18
             // 
             this.columnHeader18.Text = "Category";
-            this.columnHeader18.Width = 72;
+            this.columnHeader18.Width = 70;
             // 
             // groupBox2
             // 

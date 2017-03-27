@@ -46,7 +46,6 @@ namespace Webwinkel
 
         private void btEditCategorie_Click(object sender, EventArgs e)//saveEdit                //WORKS
         {
-            Category categoryTemp = new Category();
             category.Name = tbCategoryName.Text;
             Program.db.SaveChanges();
             Close();

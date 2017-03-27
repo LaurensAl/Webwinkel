@@ -19,21 +19,27 @@ namespace Webwinkel
         public EditArticle(WinkelEntities db)                                           //WORKS
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
             Program.db = db;
             btUpdateArticle.Hide();
+            tbCurrentCat.Hide();
+            lbCurrentCat.Hide();
             fillCategorie();//fill cat with method
         }
-        public EditArticle(WinkelEntities db, Article article)// +2                     //WORKS (does nog bring up original categorieID, fills it only!)
+        public EditArticle(Article article, Category category, WinkelEntities db)// +2                     //WORKS
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
             btAddArticle.Hide();
             Program.db = db;
+            this.category = category;
+            this.article = article;
             textBoxArticleID.Text = article.ID.ToString();
             textBoxName.Text = article.Name;
             textBoxDescription.Text = article.Description;
             textBoxStock.Text = article.Stock.ToString();
-            fillCategorie();
-
+            tbCurrentCat.Text = category.Name;
+            fillCategorie();//fill cat with method
         }
 
         private void fillCategorie()//method filler cat                                               //WORKS
@@ -48,17 +54,27 @@ namespace Webwinkel
                 cbCategories.DisplayMember = "Value";
             }
         }
-        private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit                        //TODO
+        private void btUpdateArticle_Click(object sender, EventArgs e)//SaveEdit                        //WORKS
         {
+            int value;
 
-            article.Name = textBoxName.Text;
-            article.Description = textBoxDescription.Text;
-            article.Stock = int.Parse(textBoxStock.Text);
-            int catID = (int)cbCategories.SelectedValue;
-            Category category = Program.db.Categories.Find(catID);
-            article.CategorieID = catID;///??????does not save data
-            Program.db.SaveChanges();
-            Close();
+            if (int.TryParse(textBoxStock.Text, out value))
+            {
+
+                article.Name = textBoxName.Text;
+                article.Description = textBoxDescription.Text;
+                article.Stock = int.Parse(textBoxStock.Text);
+                Category category = Program.db.Categories.Find(cbCategories.SelectedValue);
+                article.CategorieID = category.ID;
+                Program.db.SaveChanges();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Stock can only be a number, please try again!");
+                return;
+            }
+
         }
         private void btAddArticle_Click(object sender, EventArgs e)//AddArticle                         //WORKS
         {

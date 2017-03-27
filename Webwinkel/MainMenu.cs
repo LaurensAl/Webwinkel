@@ -75,7 +75,7 @@ namespace Webwinkel
                 listViewSupplier.Items.Add(supplierlist);
             }
         }
-        
+
         public void ListOrders()
         {
             //TO DOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -121,7 +121,8 @@ namespace Webwinkel
                 int outcome = 1;
                 int.TryParse(listViewArticles.SelectedItems[0].Name, out outcome);
                 Article article = Program.db.Articles.Find(outcome);
-                EditArticle articleedit = new EditArticle(Program.db, article);
+                Category category = Program.db.Categories.Find(article.CategorieID);
+                EditArticle articleedit = new EditArticle(article, category, Program.db);
                 articleedit.Show();
             }
         }
@@ -144,7 +145,6 @@ namespace Webwinkel
             EditSupplier supplierAdd = new EditSupplier(Program.db);
             supplierAdd.Show();
         }
-
         private void btSuppEdit_Click(object sender, EventArgs e)
         {
             if (listViewSupplier.SelectedItems.Count > 0)

@@ -35,6 +35,8 @@
             this.cbCategories = new System.Windows.Forms.ComboBox();
             this.btAddArticle = new System.Windows.Forms.Button();
             this.btUpdateArticle = new System.Windows.Forms.Button();
+            this.tbCurrentCat = new System.Windows.Forms.TextBox();
+            this.lbCurrentCat = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxArticleID
@@ -99,9 +101,28 @@
             this.btUpdateArticle.UseVisualStyleBackColor = true;
             this.btUpdateArticle.Click += new System.EventHandler(this.btUpdateArticle_Click);
             // 
+            // tbCurrentCat
+            // 
+            this.tbCurrentCat.Location = new System.Drawing.Point(242, 191);
+            this.tbCurrentCat.Name = "tbCurrentCat";
+            this.tbCurrentCat.ReadOnly = true;
+            this.tbCurrentCat.Size = new System.Drawing.Size(116, 20);
+            this.tbCurrentCat.TabIndex = 7;
+            // 
+            // lbCurrentCat
+            // 
+            this.lbCurrentCat.AutoSize = true;
+            this.lbCurrentCat.Location = new System.Drawing.Point(239, 172);
+            this.lbCurrentCat.Name = "lbCurrentCat";
+            this.lbCurrentCat.Size = new System.Drawing.Size(100, 13);
+            this.lbCurrentCat.TabIndex = 8;
+            this.lbCurrentCat.Text = "Current CategoryID:";
+            // 
             // EditArticle
             // 
             this.ClientSize = new System.Drawing.Size(454, 361);
+            this.Controls.Add(this.lbCurrentCat);
+            this.Controls.Add(this.tbCurrentCat);
             this.Controls.Add(this.btUpdateArticle);
             this.Controls.Add(this.btAddArticle);
             this.Controls.Add(this.cbCategories);
@@ -125,5 +146,7 @@
         private System.Windows.Forms.ComboBox cbCategories;
         private System.Windows.Forms.Button btAddArticle;
         private System.Windows.Forms.Button btUpdateArticle;
+        private System.Windows.Forms.TextBox tbCurrentCat;
+        private System.Windows.Forms.Label lbCurrentCat;
     }
 }
