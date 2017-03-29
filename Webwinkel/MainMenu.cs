@@ -129,7 +129,7 @@ namespace Webwinkel
                 int outcome = 1;
                 int.TryParse(listViewCust.SelectedItems[0].Name, out outcome);
                 Customer customer = Program.db.Customers.Find(outcome);
-                EditCustomer customeredit = new EditCustomer(customer, Program.db);
+                EditCustomer customeredit = new EditCustomer(customer);
                 customeredit.Show();
             }
         }
@@ -141,7 +141,7 @@ namespace Webwinkel
         ////////////////////////////////////////////////////////////////////////////////////////////Buttons Articles
         private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt                               //WORKS
         {
-            EditArticle articleAdd = new EditArticle(Program.db);
+            EditArticle articleAdd = new EditArticle();
             articleAdd.Show();
         }
 
@@ -154,27 +154,27 @@ namespace Webwinkel
                 Article article = Program.db.Articles.Find(outcome);
                 Category category = Program.db.Categories.Find(article.CategorieID);
                 Supplier supplier = Program.db.Suppliers.Find(article.SupplierID);
-                EditArticle articleedit = new EditArticle(article, category, supplier, Program.db);
+                EditArticle articleedit = new EditArticle(article, category, supplier);
                 articleedit.Show();
             }
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Category
         private void btAddCategory_Click(object sender, EventArgs e)//addbuttonCat                        //WORKS
         {
-            EditCategorie categorieAdd = new EditCategorie(Program.db);
+            EditCategorie categorieAdd = new EditCategorie();
             categorieAdd.Show();
         }
         private void btEditCategory_Click(object sender, EventArgs e)//editbuttonCat                       //WORKS
         {
             int catID = (int)cbCategoriesPr.SelectedValue;// int var -> typ(int) ->combobox value
             Category category = Program.db.Categories.Find(catID); // find value ->catID
-            EditCategorie categorieEdit = new EditCategorie(category, Program.db);// obj(catID) + db
+            EditCategorie categorieEdit = new EditCategorie(category);// obj(catID) + db
             categorieEdit.Show(cbCategoriesPr);// show form
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Suppliers
         private void btSuppAdd_Click(object sender, EventArgs e)                                            //WORKS
         {
-            EditSupplier supplierAdd = new EditSupplier(Program.db);
+            EditSupplier supplierAdd = new EditSupplier();
             supplierAdd.Show();
         }
         private void btSuppEdit_Click(object sender, EventArgs e)                                           //WORKS
@@ -184,7 +184,7 @@ namespace Webwinkel
                 int outcome = 1;
                 int.TryParse(listViewSupplier.SelectedItems[0].Name, out outcome);
                 Supplier supplier = Program.db.Suppliers.Find(outcome);
-                EditSupplier supplieredit = new EditSupplier(supplier, Program.db);
+                EditSupplier supplieredit = new EditSupplier(supplier);
                 supplieredit.Show();
             }
         }

@@ -16,21 +16,15 @@ namespace Webwinkel
     {
         Category category = new Category();
 
-        public EditCategorie()//default NOT used
-        {
-            InitializeComponent();
-        }
-        public EditCategorie(WinkelEntities db)// to save                                       //WORKS
+        public EditCategorie()                                                                  //WORKS
         {
             InitializeComponent();
             btUpdateCategorie.Hide();
-            Program.db = db;
         }
 
-        public EditCategorie(Category category, WinkelEntities db)//to edit                     //WORKS
+        public EditCategorie(Category category)//to edit                     //WORKS
         {
             InitializeComponent();
-            Program.db = db;
             btAddCategorie.Hide();
             this.category = category;
             tbCategoryName.Text = category.Name;

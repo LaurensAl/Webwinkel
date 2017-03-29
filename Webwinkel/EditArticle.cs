@@ -16,21 +16,19 @@ namespace Webwinkel
         Category category = new Category();
         Supplier supplier = new Supplier();
 
-        public EditArticle(WinkelEntities db)     // to Add article                                                              //WORKS
+        public EditArticle()     // to Add article                                                              //WORKS
         {
             InitializeComponent();// required for startup
             StartPosition = FormStartPosition.CenterScreen; //pops up screen in center
-            Program.db = db;// db connection
             btUpdateArticle.Hide();//hide update button
             fillCategorie();//fill cat with method
             fillSupplier();//fill sup with method
         }
-        public EditArticle(Article article, Category category, Supplier supplier, WinkelEntities db)// +4, to Edit article               //WORKS
+        public EditArticle(Article article, Category category, Supplier supplier)// +4, to Edit article               //WORKS
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             btAddArticle.Hide();
-            Program.db = db;
             this.category = category;
             this.article = article;
             this.supplier = supplier;

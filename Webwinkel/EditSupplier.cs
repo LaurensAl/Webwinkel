@@ -17,19 +17,12 @@ namespace Webwinkel
         public EditSupplier()//default NOT Used                                         
         {
             InitializeComponent();
-        }
-        public EditSupplier(WinkelEntities db) //Add Supplier                               //WORKS
-        {
-            InitializeComponent();
             btUpdateSupplier.Hide();
-            Program.db = db;
-
         }
-        public EditSupplier(Supplier supplier, WinkelEntities db)// Edit Supplier          //WORKS
+        public EditSupplier(Supplier supplier)// Edit Supplier          //WORKS
         {
             InitializeComponent();
             btSave.Hide();
-            Program.db = db;
             this.supplier = supplier;
             tbSupID.Text = supplier.ID.ToString();
             tbCompanySupp.Text = supplier.CompanyName;

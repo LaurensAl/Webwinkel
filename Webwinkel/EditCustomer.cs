@@ -20,11 +20,10 @@ namespace Webwinkel
             btUpdate.Hide();
         }
 
-        public EditCustomer(Customer customer, WinkelEntities db)//to edit              //WORKS
+        public EditCustomer(Customer customer)//to edit                                  //WORKS
         {
             InitializeComponent();
             btSave.Hide();
-            Program.db = db;
             this.customer = customer;
             tbArticleID.Text = customer.ID.ToString();
             textBoxFirstName.Text = customer.FirstName;
