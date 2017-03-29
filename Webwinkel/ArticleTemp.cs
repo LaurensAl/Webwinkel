@@ -15,7 +15,7 @@ namespace Webwinkel
             Description = description;
             Stock = stock;
         }
-        public void AddFK(int CatID, int SupID)
+        public void AddFK(int CatID, int SupID)                                     //WORKS
         {
             Category category = Program.db.Categories.Find(CatID);
             CategorieID = category.ID;

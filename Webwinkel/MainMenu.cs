@@ -17,18 +17,18 @@ namespace Webwinkel
         {
             InitializeComponent();
         }
-        //////////////////////////////////////////////refresh/Refocus MainMenu
+        /////////////////////////////////////////////////////////////////////////////////////////refresh/Refocus MainMenu
         private void MainMenu_Activated(object sender, EventArgs e)                                     //WORKS
         {
             ListCustomers();
             ListCategories();
             ListArticles();
             ListSuppliers();
-            // ListOrders();
+            ListOrders();
 
         }
-        //////////////////////////////////////////////Methods for fillingup data -> MainMenu
-        public void ListCategories()//startup/refresh                                               //WORKS
+        //////////////////////////////////////////////////////////////////////////////////Methods for fillingup data -> MainMenu
+        public void ListCategories()//startup/refresh                                                        //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
@@ -40,8 +40,7 @@ namespace Webwinkel
                 cbCategoriesPr.DisplayMember = "Value";
             }
         }
-
-        public void ListCustomers()//startup/refresh                                                //WORKS
+        public void ListCustomers()//startup/refresh                                                         //WORKS
         {
             listViewCust.Items.Clear();
             foreach (Customer customers in Program.db.Customers)
@@ -52,13 +51,24 @@ namespace Webwinkel
                 customerlist.Name = customers.ID.ToString();
                 listViewCust.Items.Add(customerlist);
             }
+
+            Dictionary<int, string> items = new Dictionary<int, string>(); // cb @orders                   //WORKS
+
+            foreach (Customer customer in Program.db.Customers)
+            {
+                items.Add(customer.ID, customer.FirstName);
+                cbCustomers.DataSource = new BindingSource(items, null);
+                cbCustomers.ValueMember = "Key";
+                cbCustomers.DisplayMember = "Value";
+            }
+
         }
         public void ListArticles()//startup/refresh                                                      //WORKS
         {
             listViewArticles.Items.Clear();
             foreach (Article articles in Program.db.Articles)
             {
-                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Description, articles.Stock.ToString(), articles.CategorieID.ToString() };
+                string[] myarticles = { articles.ID.ToString(), articles.Name, articles.Description, articles.Stock.ToString(), articles.CategorieID.ToString(), articles.SupplierID.ToString() };
                 ListViewItem articleslist = new ListViewItem(myarticles);
                 articleslist.Name = articles.ID.ToString();
                 listViewArticles.Items.Add(articleslist);
@@ -75,23 +85,44 @@ namespace Webwinkel
                 listViewSupplier.Items.Add(supplierlist);
             }
         }
-
-        public void ListOrders()
+        public void ListOrders()                                                                        //Untested, but should work
         {
-            //TO DOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-            //listViewOrders.Items.Clear();
-            //foreach (Order orders in Program.db.Orders)
-            //{
-            //    string[] myorders = { orders.ID.ToString(), orders.OrdersArticles.ToString() };
-            //    ListViewItem orderslist = new ListViewItem(myorders);
-            //    orderslist.Name = orders.ID.ToString();
-            //    listViewArticles.Items.Add(orderslist);
+            Dictionary<int, string> items = new Dictionary<int, string>();
+
+            foreach (Order order in Program.db.Orders)
+            {
+                items.Add(order.ID, order.ID.ToString());//only need ID
+                cbOrders.DataSource = new BindingSource(items, null);
+                cbOrders.ValueMember = "Key";
+                cbOrders.DisplayMember = "Value";
+            }
+
+            lvOrders.Items.Clear();
+
+            //if (cbOrders == null)
+            //{ /// fills Orders Listview if available
+            //    int OrderID = (int)cbOrders.SelectedValue;
+            //    Order tempOrder = Program.db.Orders.Find(OrderID);
+
+            //    if (tempOrder != null)
+            //    {
+
+            //        //fill list
+            //        foreach (??)
+            //        {
+            //            string[] data = {??
+
+            //    };
+            //            ListViewItem item = new ListViewItem(data);
+            //            lvOrders.Items.Add(item);
+            //        }
+            //    }
             //}
-
         }
-        ////////////////////////////////////////////////////////////////Buttons Customer
 
-        private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus              //WORKS
+        /////////////////////////////////////////////////////////////////////////////////////////Buttons Customer
+
+        private void btEditCustomer_Click_1(object sender, EventArgs e)//editbuttonCus                           //WORKS
         {
             if (listViewCust.SelectedItems.Count > 0)
             {
@@ -102,19 +133,19 @@ namespace Webwinkel
                 customeredit.Show();
             }
         }
-        private void btAddCustomers_Click(object sender, EventArgs e)//addbuttonCus                     //WORKS
+        private void btAddCustomers_Click(object sender, EventArgs e)//addbuttonCus                             //WORKS
         {
             EditCustomer customEdit = new EditCustomer();
             customEdit.Show();
         }
-        ////////////////////////////////////////////////////////////////Buttons Articles
-        private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt                       //WORKS
+        ////////////////////////////////////////////////////////////////////////////////////////////Buttons Articles
+        private void btAddArticle_Click(object sender, EventArgs e)//addbuttonArt                               //WORKS
         {
             EditArticle articleAdd = new EditArticle(Program.db);
             articleAdd.Show();
         }
 
-        private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt                     //Supplier needs to update
+        private void btEditArticle_Click(object sender, EventArgs e)//editbuttonArt                                 //WORKS
         {
             if (listViewArticles.SelectedItems.Count > 0)
             {
@@ -141,12 +172,12 @@ namespace Webwinkel
             categorieEdit.Show(cbCategoriesPr);// show form
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Suppliers
-        private void btSuppAdd_Click(object sender, EventArgs e)
+        private void btSuppAdd_Click(object sender, EventArgs e)                                            //WORKS
         {
             EditSupplier supplierAdd = new EditSupplier(Program.db);
             supplierAdd.Show();
         }
-        private void btSuppEdit_Click(object sender, EventArgs e)
+        private void btSuppEdit_Click(object sender, EventArgs e)                                           //WORKS
         {
             if (listViewSupplier.SelectedItems.Count > 0)
             {
@@ -159,31 +190,9 @@ namespace Webwinkel
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Order
-        private void btAddToOrder_Click(object sender, EventArgs e)
+        private void btCreateOrder_Click(object sender, EventArgs e)
         {
-            Article article = new Article();
 
-            if (listViewArticles.SelectedItems.Count != 0)
-            {
-                string[] items = { article.ID.ToString(), article.Name, article.Description };
-                ListViewItem stuff = new ListViewItem(items);
-                article.Name = article.ID.ToString();
-                listViewOrders.Items.Add(stuff);
-            }
-        }
-        private void btRemoveRow_Click(object sender, EventArgs e)
-        {
-            ////////////////////////////remove order
-        }
-
-        private void btResetOrder_Click(object sender, EventArgs e)
-        {
-            ////////////////////////////////reset order
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Counter
-        private void tbOrderAmount_TextChanged(object sender, EventArgs e)
-        {
-            //foreach (listvieworder in listViewOrders) { }
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Search
