@@ -9,7 +9,7 @@ namespace Webwinkel
     public partial class Article
     {
         
-        public Article(string name, string description, int stock)//cotr
+        public Article(string name, string description, int stock)
         {
             Name = name;
             Description = description;

@@ -45,7 +45,7 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btAddtoOrder = new System.Windows.Forms.Button();
             this.btEditArticle = new System.Windows.Forms.Button();
             this.btAddArticle = new System.Windows.Forms.Button();
             this.btCreateOrder = new System.Windows.Forms.Button();
@@ -60,19 +60,24 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvCurrentOrder = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btAddOrder = new System.Windows.Forms.Button();
+            this.btSaveOrder = new System.Windows.Forms.Button();
             this.cbCustomers = new System.Windows.Forms.ComboBox();
             this.btAddCategory = new System.Windows.Forms.Button();
             this.btEditCategory = new System.Windows.Forms.Button();
             this.cbCategoriesPr = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbOrders = new System.Windows.Forms.ComboBox();
+            this.lvOrders = new System.Windows.Forms.ListView();
+            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btSuppAdd = new System.Windows.Forms.Button();
@@ -84,11 +89,6 @@
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvOrders = new System.Windows.Forms.ListView();
-            this.cbOrders = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -227,7 +227,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btAddtoOrder);
             this.groupBox2.Controls.Add(this.btEditArticle);
             this.groupBox2.Controls.Add(this.btAddArticle);
             this.groupBox2.Controls.Add(this.listViewArticles);
@@ -238,14 +238,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Browse Articles";
             // 
-            // button1
+            // btAddtoOrder
             // 
-            this.button1.Location = new System.Drawing.Point(389, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add to Order";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btAddtoOrder.Location = new System.Drawing.Point(389, 16);
+            this.btAddtoOrder.Name = "btAddtoOrder";
+            this.btAddtoOrder.Size = new System.Drawing.Size(108, 23);
+            this.btAddtoOrder.TabIndex = 19;
+            this.btAddtoOrder.Text = "Add to Order";
+            this.btAddtoOrder.UseVisualStyleBackColor = true;
+            this.btAddtoOrder.Click += new System.EventHandler(this.btAddtoOrder_Click);
             // 
             // btEditArticle
             // 
@@ -361,8 +362,8 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.LightGray;
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.listView1);
-            this.groupBox4.Controls.Add(this.btAddOrder);
+            this.groupBox4.Controls.Add(this.lvCurrentOrder);
+            this.groupBox4.Controls.Add(this.btSaveOrder);
             this.groupBox4.Controls.Add(this.cbCustomers);
             this.groupBox4.Controls.Add(this.btCreateOrder);
             this.groupBox4.Location = new System.Drawing.Point(12, 225);
@@ -381,23 +382,23 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Current Customer:";
             // 
-            // listView1
+            // lvCurrentOrder
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvCurrentOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader14,
             this.columnHeader15,
             this.columnHeader16,
             this.columnHeader17,
             this.columnHeader25,
             this.columnHeader26});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(22, 65);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(475, 113);
-            this.listView1.TabIndex = 20;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvCurrentOrder.FullRowSelect = true;
+            this.lvCurrentOrder.GridLines = true;
+            this.lvCurrentOrder.Location = new System.Drawing.Point(22, 65);
+            this.lvCurrentOrder.Name = "lvCurrentOrder";
+            this.lvCurrentOrder.Size = new System.Drawing.Size(475, 113);
+            this.lvCurrentOrder.TabIndex = 20;
+            this.lvCurrentOrder.UseCompatibleStateImageBehavior = false;
+            this.lvCurrentOrder.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader14
             // 
@@ -428,14 +429,15 @@
             // 
             this.columnHeader26.Text = "Supplier";
             // 
-            // btAddOrder
+            // btSaveOrder
             // 
-            this.btAddOrder.Location = new System.Drawing.Point(381, 31);
-            this.btAddOrder.Name = "btAddOrder";
-            this.btAddOrder.Size = new System.Drawing.Size(116, 20);
-            this.btAddOrder.TabIndex = 18;
-            this.btAddOrder.Text = "Save Order";
-            this.btAddOrder.UseVisualStyleBackColor = true;
+            this.btSaveOrder.Location = new System.Drawing.Point(381, 31);
+            this.btSaveOrder.Name = "btSaveOrder";
+            this.btSaveOrder.Size = new System.Drawing.Size(116, 20);
+            this.btSaveOrder.TabIndex = 18;
+            this.btSaveOrder.Text = "Save Order";
+            this.btSaveOrder.UseVisualStyleBackColor = true;
+            this.btSaveOrder.Click += new System.EventHandler(this.btSaveOrder_Click);
             // 
             // cbCustomers
             // 
@@ -445,7 +447,6 @@
             this.cbCustomers.Name = "cbCustomers";
             this.cbCustomers.Size = new System.Drawing.Size(121, 21);
             this.cbCustomers.TabIndex = 13;
-   //         this.cbCustomers.SelectedIndexChanged += new System.EventHandler(this.cbCustomers_SelectedIndexChanged);
             // 
             // btAddCategory
             // 
@@ -490,6 +491,46 @@
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Preview Orders";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(112, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "OrderID";
+            // 
+            // cbOrders
+            // 
+            this.cbOrders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrders.FormattingEnabled = true;
+            this.cbOrders.Location = new System.Drawing.Point(162, 19);
+            this.cbOrders.Name = "cbOrders";
+            this.cbOrders.Size = new System.Drawing.Size(64, 21);
+            this.cbOrders.TabIndex = 23;
+            // 
+            // lvOrders
+            // 
+            this.lvOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader27,
+            this.columnHeader28});
+            this.lvOrders.Location = new System.Drawing.Point(6, 50);
+            this.lvOrders.Name = "lvOrders";
+            this.lvOrders.Size = new System.Drawing.Size(220, 76);
+            this.lvOrders.TabIndex = 23;
+            this.lvOrders.UseCompatibleStateImageBehavior = false;
+            this.lvOrders.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader27
+            // 
+            this.columnHeader27.Text = "Article ID";
+            this.columnHeader27.Width = 64;
+            // 
+            // columnHeader28
+            // 
+            this.columnHeader28.Text = "Name";
+            this.columnHeader28.Width = 128;
             // 
             // groupBox6
             // 
@@ -591,46 +632,6 @@
             this.columnHeader23.Text = "E-mail";
             this.columnHeader23.Width = 100;
             // 
-            // lvOrders
-            // 
-            this.lvOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader27,
-            this.columnHeader28});
-            this.lvOrders.Location = new System.Drawing.Point(6, 50);
-            this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(220, 76);
-            this.lvOrders.TabIndex = 23;
-            this.lvOrders.UseCompatibleStateImageBehavior = false;
-            this.lvOrders.View = System.Windows.Forms.View.Details;
-            // 
-            // cbOrders
-            // 
-            this.cbOrders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbOrders.FormattingEnabled = true;
-            this.cbOrders.Location = new System.Drawing.Point(162, 19);
-            this.cbOrders.Name = "cbOrders";
-            this.cbOrders.Size = new System.Drawing.Size(64, 21);
-            this.cbOrders.TabIndex = 23;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(112, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "OrderID";
-            // 
-            // columnHeader27
-            // 
-            this.columnHeader27.Text = "Article ID";
-            this.columnHeader27.Width = 64;
-            // 
-            // columnHeader28
-            // 
-            this.columnHeader28.Text = "Name";
-            this.columnHeader28.Width = 128;
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,15 +710,15 @@
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.ColumnHeader columnHeader24;
         private System.Windows.Forms.ComboBox cbCustomers;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btAddtoOrder;
+        private System.Windows.Forms.ListView lvCurrentOrder;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.ColumnHeader columnHeader25;
         private System.Windows.Forms.ColumnHeader columnHeader26;
-        private System.Windows.Forms.Button btAddOrder;
+        private System.Windows.Forms.Button btSaveOrder;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

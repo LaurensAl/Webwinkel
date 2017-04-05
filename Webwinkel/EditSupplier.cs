@@ -33,15 +33,30 @@ namespace Webwinkel
 
         private void btSave_Click(object sender, EventArgs e)                               //WORKS
         {
-            Supplier supplierTemp = new Supplier(tbCompanySupp.Text, tbSuppAdress.Text, int.Parse(tbSupplierPhone.Text), tbSuppMail.Text);
-            Program.db.Suppliers.Add(supplierTemp);
-            Program.db.SaveChanges();
-            Close();
-        }
+            int value;
+
+            if (int.TryParse(tbSupplierPhone.Text, out value))
+            {
+                Supplier supplierTemp = new Supplier(tbCompanySupp.Text, tbSuppAdress.Text, int.Parse(tbSupplierPhone.Text), tbSuppMail.Text);
+                Program.db.Suppliers.Add(supplierTemp);
+                Program.db.SaveChanges();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Phonenumber can only be a number, please try again!");
+            }
+
+            }
 
         private void btUpdate_Click(object sender, EventArgs e)                             //WORKS
         {
-            int outcome;
+            int value;
+
+            if (int.TryParse(tbSupplierPhone.Text, out value))
+            {
+
+                int outcome;
 
             supplier.CompanyName = tbCompanySupp.Text;
             supplier.Adress = tbSuppAdress.Text;
@@ -51,5 +66,12 @@ namespace Webwinkel
             Program.db.SaveChanges();
             Close();
         }
+            else
+            {
+                MessageBox.Show("Phonenumber can only be a number, please try again!");
+            }
+
+
+}
     }
 }

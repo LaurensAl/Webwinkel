@@ -13,11 +13,11 @@ namespace Webwinkel
     public partial class MainMenu : Form
     {
 
-        public MainMenu()//init without data                                                        //WORKS, DUH!
+        public MainMenu()//run without this, NOPE                                                             //WORKS, DUH!
         {
             InitializeComponent();
         }
-        /////////////////////////////////////////////////////////////////////////////////////////refresh/Refocus MainMenu
+        //////////////////////////////////////////////////////////////////////////////////Refocus MainMenu
         private void MainMenu_Activated(object sender, EventArgs e)                                     //WORKS
         {
             ListCustomers();
@@ -27,7 +27,7 @@ namespace Webwinkel
             ListOrders();
 
         }
-        //////////////////////////////////////////////////////////////////////////////////Methods for fillingup data -> MainMenu
+        ////////////////////////////////////////////////////////////////////////////////// data -> MainMenu
         public void ListCategories()//startup/refresh                                                        //WORKS
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
@@ -85,7 +85,7 @@ namespace Webwinkel
                 listViewSupplier.Items.Add(supplierlist);
             }
         }
-        public void ListOrders()                                                                        //Untested, but should work
+        public void ListOrders()//startup/refresh                                                                 //Untested, but should work->(why? no data atm)
         {
             Dictionary<int, string> items = new Dictionary<int, string>();
 
@@ -98,26 +98,8 @@ namespace Webwinkel
             }
 
             lvOrders.Items.Clear();
+            //TODO(PROBLEM)Put data from: articles < orderarticles > order & customer in lv.
 
-            //if (cbOrders == null)
-            //{ /// fills Orders Listview if available
-            //    int OrderID = (int)cbOrders.SelectedValue;
-            //    Order tempOrder = Program.db.Orders.Find(OrderID);
-
-            //    if (tempOrder != null)
-            //    {
-
-            //        //fill list
-            //        foreach (??)
-            //        {
-            //            string[] data = {??
-
-            //    };
-            //            ListViewItem item = new ListViewItem(data);
-            //            lvOrders.Items.Add(item);
-            //        }
-            //    }
-            //}
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////Buttons Customer
@@ -190,11 +172,57 @@ namespace Webwinkel
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Order
-        private void btCreateOrder_Click(object sender, EventArgs e)
+        private void btAddtoOrder_Click(object sender, EventArgs e)
         {
+            if (listViewArticles.SelectedItems.Count > 0)
+            {
+                int outcome = 1;
+                int.TryParse(listViewArticles.SelectedItems[0].Name, out outcome);
+                /////// TODO(problem)->value to listview lvCurrentOrder
+
+            }
+        }
+        public void SaveArtOrd(int articleID, int orderID)//save ID's pivot(not used,yet)
+        {
+            using (WinkelEntities db = new WinkelEntities())
+            {
+                Article a = new Article { ID = articleID };
+                Program.db.Articles.Add(a);
+                Program.db.Articles.Attach(a);
+
+                Order o = new Order { ID = orderID };
+                Program.db.Orders.Add(o);
+                Program.db.Orders.Add(o);
+
+            }
 
         }
 
+        private void btSaveOrder_Click(object sender, EventArgs e)
+        {
+
+            //create OrderID from lvCurrentOrder items and Customer
+
+            foreach (ListViewItem item in lvCurrentOrder.Items)
+            {
+                item.Selected = true;//select all values in lvorders
+            }
+            int outcome = 1;
+            int.TryParse(lvCurrentOrder.SelectedItems[0].Name, out outcome);
+            //
+            //////////////////////////////////////////////TODO(PROBLEM) add many to many relationship? SaveArtOrd()?
+            //
+            Program.db.SaveChanges();
+            ListOrders();//refresh list with all orders
+
+        }
+
+        private void btCreateOrder_Click(object sender, EventArgs e)                                //Untested but should work
+        {
+            lvCurrentOrder.Items.Clear(); //clear lvCurrentOrder
+            ListOrders();//refresh cbOrders & lvOrders
+        }
+        
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Buttons Search
 
         private void btsearch_Click(object sender, EventArgs e)                                     //WORKS
@@ -232,6 +260,8 @@ namespace Webwinkel
                 }
             }
         }
+
+
     }
 
 }
