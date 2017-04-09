@@ -182,7 +182,7 @@ namespace Webwinkel
 
             }
         }
-        public void SaveArtOrd(int articleID, int orderID)//save ID's pivot(not used,yet)
+        public void SaveArtOrd(int articleID, int orderID)//save ID's pivot(not used, untested)
         {
             using (WinkelEntities db = new WinkelEntities())
             {
@@ -210,14 +210,14 @@ namespace Webwinkel
             int outcome = 1;
             int.TryParse(lvCurrentOrder.SelectedItems[0].Name, out outcome);
             //
-            //////////////////////////////////////////////TODO(PROBLEM) add many to many relationship? SaveArtOrd()?
+            /////////////////////////////////////////////////////////TODO(PROBLEM) add many to many relationship? SaveArtOrd()?
             //
             Program.db.SaveChanges();
             ListOrders();//refresh list with all orders
 
         }
 
-        private void btCreateOrder_Click(object sender, EventArgs e)                                //Untested but should work
+        private void btCreateOrder_Click(object sender, EventArgs e)                                //Untested, but should work!
         {
             lvCurrentOrder.Items.Clear(); //clear lvCurrentOrder
             ListOrders();//refresh cbOrders & lvOrders
